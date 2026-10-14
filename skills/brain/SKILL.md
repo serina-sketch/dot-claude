@@ -26,7 +26,7 @@ Every file starts with `# Title`, then one line in italics saying what it holds.
 - **plans/**: one file per plan or live thread. The italic line says `Made <date>. Status: <...>.` Then two lines the index shows:
   `- **Where I stopped:** ...`
   `- **Next step:** ...`
-  Steps are optional checkboxes `- [ ]` / `- [x]`; a paused step is `- [ ] (on hold) ...`. The index counts steps left. A plan for later with no steps yet is fine. When a plan is done or dropped, delete it; its idea keeps the history and design keeps the decisions.
+  Steps are optional checkboxes `- [ ]` / `- [x]`; a paused step is `- [ ] (on hold) ...`. The index counts steps left. A plan for later with no steps yet is fine. When a plan is done or dropped, first check that its decisions are in design/ and its idea has the status, then delete it.
 - **design/**: one file per topic: what it is right now. Every decision with its date and why. A reversal keeps the old line crossed out with `Replaced <date>`. Optional sections `## Confirmed working` (what I tested, with the date) and `## Known issues` (small bugs not fixed yet, one `- ` line each; the index counts them), so they survive when a plan ends. Proposals that aren't decided go to ideas/, not here.
 - **knowledge/**: one file per topic. Each finding is a `## Heading (checked <date>)` with its source. Measurements (costs, timings) and setup commands for outside tools go here too.
 - **modes/**: one file per mode (`tutor.md`, `coach.md`, ...) for what only that mode needs.
