@@ -48,3 +48,6 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 - `master` is the only branch (the `writing` repo calls it `main`). Commit and push on it.
 - Cloud sessions (phone, web) start on their own `claude/...` branch: after each commit, merge it into `master` and push `master`, without asking. No pull requests.
 - Never leave work only on another branch.
+
+# Cloud sessions (added 2026-10-14)
+- How my setup reaches phone and web sessions, and how to turn it on for another repo: `claude-assistant/.brain/knowledge/cloud-setup.md`.
