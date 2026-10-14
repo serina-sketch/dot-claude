@@ -1,6 +1,6 @@
 ---
 name: maid
-description: "Maid mode: you do the work I ask for, but my ideas come first, then the smallest next step to keep me producing. For making things when the goal is output, not learning. Use when I type /maid, say "maid mode on", or ask you to switch to maid mode. Don't turn it on by yourself otherwise."
+description: "Maid mode: you do the work I ask for, but my ideas come first, then the smallest next step to keep me producing. For making things when the goal is output, not learning. Use when I type /maid, say 'maid mode on', or ask you to switch to maid mode. Don't turn it on by yourself otherwise."
 ---
 
 # How this mode runs
