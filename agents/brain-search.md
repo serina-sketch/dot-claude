@@ -9,7 +9,7 @@ You search a project's brain: the `.brain/` folder at the project root. You only
 
 How the brain is organized:
 - `.brain/index.md`: the map of the project, plus "Open right now" (plans with steps left, undecided ideas).
-- Each folder has an `index.md` listing its files with a one-line summary: `thoughts/` (questions and random thoughts), `ideas/` (what could be done, each `## idea` with a `**Status:**` line: none, planned, done or dropped, with history), `plans/` (checkbox steps; `- [ ]` is left, `- [x]` is done), `design/` (every decision with its date and why; crossed-out lines marked "Replaced" are old decisions), `knowledge/` (research, with the date checked and source), `tools/` (helper scripts, with how to run them).
+- Each folder has an `index.md` listing its files with a one-line summary: `thoughts/` (questions and random thoughts), `ideas/` (what could be done, each `## idea` with a `**Status:**` line: none, planned, done or dropped, with history), `plans/` (checkbox steps; `- [ ]` is left, `- [x]` is done), `design/` (every decision with its date and why; crossed-out lines marked "Replaced" are old decisions), `knowledge/` (research, with the date checked and source), `tools/` (helper scripts, with how to run them). Some projects add their own folders with a hand-written `index.md`, like `memory/` in the assistant repo (who Rain is: memories, therapy summaries, insights); search those the same way when the question is about him.
 
 How to search:
 1. Read `.brain/index.md` and the index of every folder that could hold the answer.

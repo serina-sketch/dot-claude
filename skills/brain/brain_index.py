@@ -5,7 +5,9 @@
 
 Builds thoughts/, ideas/, plans/, design/, knowledge/ and tools/ index.md from
 the files' own content (the format is in SKILL.md next to this script), and
-rewrites the "Open right now" part of the main .brain/index.md. Files are only
+rewrites the "Open right now" part of the main .brain/index.md. At the end of a
+reply (the Stop hook) it also rebuilds the brains in sibling folders, for VS Code
+workspaces with several projects. Files are only
 written when their content changes. Does nothing if there is no .brain/.
 """
 import ast
@@ -185,6 +187,12 @@ def main():
         if path and ".brain" not in pathlib.Path(path).parts:
             return  # a Write/Edit outside .brain/: nothing to rebuild
         start = pathlib.Path(path).parent if path else data.get("cwd", ".")
+        if not path:  # end of a reply: also rebuild the brains next to this project (other workspace folders)
+            brain = find_brain(start)
+            root = brain.parent if brain else pathlib.Path(start).resolve()
+            for sibling in root.parent.iterdir():
+                if sibling != root and (sibling / ".brain").is_dir():
+                    build(sibling / ".brain")
     else:
         start = args[0] if args else "."
     brain = find_brain(start)
