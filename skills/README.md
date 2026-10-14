@@ -53,3 +53,7 @@ none
 ## Coach
 I'm learning how character cards work. Explain each section of the card (personality, scenario, first message, example dialogue) the first time we touch it. I decide what goes in each section; you write it out.
 ```
+
+## brain
+
+Not a mode: the format of every project's `.brain/` folder, and `brain_index.py`, which rebuilds its indexes. Hooks in `settings.json` run it after every write in `.brain/` and at the end of each reply.
