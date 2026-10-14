@@ -8,6 +8,7 @@
 ## Folders
 - `design/`: decisions about the global setup: the brain, plans, and how `dot-claude` syncs.
 - `knowledge/`: research and setup notes: cloud sessions, model pricing, how others sync their setup.
+- `plans/`, `ideas/`, `thoughts/`: created when there's work on the global setup to plan or think about.
 
 The work that built most of this happened in claude-assistant (its plans, ideas and thoughts stay there).
 
