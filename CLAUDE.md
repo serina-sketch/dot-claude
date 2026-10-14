@@ -45,9 +45,24 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 - **Commit the brain** along with the project's other changes. A project's own CLAUDE.md can say what's out of scope for its brain.
 
 # Git: always master (added 2026-10-14)
-- `master` is the only branch (the `writing` repo calls it `main`). Commit and push on it.
+- `master` is the only branch (the `writing` repo calls it `main`): every commit goes there and gets pushed. *When* to commit is up to each project's `CLAUDE.md` (claude-assistant: right after every write; chatbot: at the end of a round; mimitabi: only when I ask).
 - Cloud sessions (phone, web) start on their own `claude/...` branch: after each commit, merge it into `master` and push `master`, without asking. No pull requests.
 - Never leave work only on another branch.
+
+# Subagents (added 2026-10-14)
+- **Haiku subagents always run at low effort** (`effort: "low"`).
+- **Big jobs get split.** Haiku costs 5x more once a single request passes 100K tokens of context (`claude-assistant/.brain/knowledge/claude-pricing.md`). If a job looks too big for one Haiku agent to stay under that, spawn a Sonnet supervisor at low effort that breaks it into smaller Haiku agents and checks what they bring back.
+- **When a subagent's output is wrong:** if I want the result itself, fixing the output is fine. If the point is a subagent that does this kind of task well on its own (a reusable agent), fix the agent's prompt instead of its output, and re-run only when I say so.
+
+# Never mention connector authorization (added 2026-10-14)
+- Don't tell me that connectors (Gmail, Google Calendar or any other MCP server) need authorizing or re-authorizing. Ignore those notices.
+
+# Memory lives in the repos (added 2026-10-14)
+- Don't use Claude Code's built-in memory folder (`~/.claude/projects/*/memory/`). Instructions go in the project's `CLAUDE.md` (or this file, if they hold everywhere); facts go in the project's brain.
+
+# Shell quirks on this PC (added 2026-10-14)
+- **Bash tool:** a double backslash `\\` collapses to a single `\` in the command text, even inside quoted `<<'EOF'` heredocs. Write anything with backslashes (regex escapes, `\\n`, Windows paths) with the Write or Edit tool, never a heredoc.
+- **PowerShell:** a local variable with the same name as a typed parameter (any casing) gets re-coerced to that type; arrays collapse into one space-joined string. Never reuse a parameter's name for a local.
 
 # Cloud sessions (added 2026-10-14)
 - How my setup reaches phone and web sessions, and how to turn it on for another repo: `claude-assistant/.brain/knowledge/cloud-setup.md`.
