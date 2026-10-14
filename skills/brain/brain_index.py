@@ -157,7 +157,7 @@ def build(brain):
         if name == "ideas":
             body, groups = ideas(folder)
             out += body
-            open_ideas = groups["open"]
+            open_ideas = [re.sub(r"\]\(([^)/]+\.md)\)", r"](ideas/\1)", l) for l in groups["open"]]
         elif name == "plans":
             body, open_plans = plans(folder)
             out += body + [""]
