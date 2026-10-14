@@ -11,7 +11,7 @@
 
 # Where things go (added 2026-10-14)
 The quick test: if it says "Claude should…", it's instructions (global, project CLAUDE.md, a mode or a skill). If it says "this is…" or "I decided…", it's the brain. Say each thing in one place only; elsewhere, point to it.
-- **This file (`~/.claude/CLAUDE.md`):** rules about me that hold in every project: the brain, plans, lists, "later", git, adult content, and this list.
+- **This file (`~/.claude/CLAUDE.md`):** rules about me that hold in every project: the brain, plans, lists, "later", git, adult content, and this list. The facts and decisions behind these global rules live in `~/.claude/.brain/` (the `dot-claude` repo's own brain).
 - **A project's `CLAUDE.md`:** how Claude works in that project, whatever the mode: what the project is (a few lines), where things are, which agents and skills to use, and rules that only apply there. Don't repeat this file or the brain; don't keep "where things stand" summaries (the brain has them).
 - **`.modes/personalize.md`:** only what tutor, maid or coach do differently in that project. Anything that applies whatever the mode goes in the project's `CLAUDE.md`.
 - **The brain (`.brain/`):** facts: what's true, decisions with the date and why, plans, research, measurements, and memory about me. Never instructions to Claude.
@@ -51,7 +51,7 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 
 # Subagents (added 2026-10-14)
 - **Haiku subagents always run at low effort** (`effort: "low"`).
-- **Big jobs get split.** Haiku costs 5x more once a single request passes 100K tokens of context (`claude-assistant/.brain/knowledge/claude-pricing.md`). If a job looks too big for one Haiku agent to stay under that, spawn a Sonnet supervisor at low effort that breaks it into smaller Haiku agents and checks what they bring back.
+- **Big jobs get split.** Haiku costs 5x more once a single request passes 100K tokens of context (`~/.claude/.brain/knowledge/claude-pricing.md`). If a job looks too big for one Haiku agent to stay under that, spawn a Sonnet supervisor at low effort that breaks it into smaller Haiku agents and checks what they bring back.
 - **When a subagent's output is wrong:** if I want the result itself, fixing the output is fine. If the point is a subagent that does this kind of task well on its own (a reusable agent), fix the agent's prompt instead of its output, and re-run only when I say so.
 
 # Never mention connector authorization (added 2026-10-14)
@@ -65,4 +65,4 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 - **PowerShell:** a local variable with the same name as a typed parameter (any casing) gets re-coerced to that type; arrays collapse into one space-joined string. Never reuse a parameter's name for a local.
 
 # Cloud sessions (added 2026-10-14)
-- How my setup reaches phone and web sessions, and how to turn it on for another repo: `claude-assistant/.brain/knowledge/cloud-setup.md`.
+- How my setup reaches phone and web sessions, and how to turn it on for another repo: `~/.claude/.brain/knowledge/cloud-setup.md`.

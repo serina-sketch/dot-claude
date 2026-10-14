@@ -1,0 +1,22 @@
+# Brain index
+
+*The map of the `dot-claude` brain. Each folder has its own `index.md` listing its files.*
+
+## This project
+`dot-claude` is my global Claude Code setup (`~/.claude`): the global rules in `CLAUDE.md`, the modes and the brain skill in `skills/`, the `brain-search` agent, and the settings and hooks. It syncs through GitHub to every PC, and the cloud environment's setup script clones it into every cloud session. This brain holds the facts and decisions behind the global setup, so any project, on any machine, can find them at `~/.claude/.brain/`.
+
+## Folders
+- `design/`: decisions about the global setup: the brain, plans, and how `dot-claude` syncs.
+- `knowledge/`: research and setup notes: cloud sessions, model pricing, how others sync their setup.
+
+The work that built most of this happened in claude-assistant (its plans, ideas and thoughts stay there).
+
+<!-- auto: everything below is rebuilt by brain_index.py -->
+
+## Open right now
+
+**Plans with steps left:**
+- none
+
+**Ideas not decided yet:**
+- none
