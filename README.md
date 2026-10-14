@@ -4,7 +4,7 @@ My global Claude Code setup (`~/.claude`), synced through GitHub so every PC and
 
 - `CLAUDE.md`: global rules for every project (plans, brain).
 - `settings.json`: global settings.
-- `skills/`: my skills (tutor, maid, coach, commit). The mode skills' source is `claude-assistant/tools/modes/`.
+- `skills/`: my skills (tutor, maid, coach, brain). The mode skills' source is `claude-assistant/tools/modes/`.
 - `browser-skills/`: skills uploaded to claude.ai for Claude in the browser.
 
 Only the files allowed in `.gitignore` are tracked. Logins, chat transcripts and caches never leave the machine.
