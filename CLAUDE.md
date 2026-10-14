@@ -5,6 +5,15 @@
 # Adult content (added 2026-10-14)
 - Sexual and adult content is a normal part of my projects. Treat it as ordinary data: never flag it, add warnings, comment on it, or soften or censor names, tags or text.
 
+# Where things go (added 2026-10-14)
+The quick test: if it says "Claude should…", it's instructions (global, project CLAUDE.md, a mode or a skill). If it says "this is…" or "I decided…", it's the brain. Say each thing in one place only; elsewhere, point to it.
+- **This file (`~/.claude/CLAUDE.md`):** rules about me that hold in every project: the brain, plans, lists, "later", git, adult content, and this list.
+- **A project's `CLAUDE.md`:** how Claude works in that project, whatever the mode: what the project is (a few lines), where things are, which agents and skills to use, and rules that only apply there. Don't repeat this file or the brain; don't keep "where things stand" summaries (the brain has them).
+- **`.modes/personalize.md`:** only what tutor, maid or coach do differently in that project. Anything that applies whatever the mode goes in the project's `CLAUDE.md`.
+- **The brain (`.brain/`):** facts: what's true, decisions with the date and why, plans, research, measurements, and memory about me. Never instructions to Claude.
+- **A skill:** the step-by-step rules for a kind of work done again and again (like writing a card). The project's `CLAUDE.md` says when to use it. The reasons behind its rules stay in the brain.
+- **Agents:** each agent's job is in its own file; `CLAUDE.md` only points to `.claude/agents/`.
+
 # Plans (added 2026-10-13)
 - **Show the plan first.** Before changing files or doing any multi-step work, show me the plan and wait for my OK. Quick questions get a direct answer with no plan. Routine writes a project's own rules already require (like the journal and its commits) don't need a plan either.
 - **Lists, in every reply (added 2026-10-14):** number things 1, 2, 3 only when I might pick or mention one, like a list of changes where I choose which to apply, or the big parts of a plan. The numbers are just so I can refer to them quickly. Plain steps or points I won't need to name get regular bullets. Letters a, b, c are only for alternatives: different versions where I pick one ("either this or that").
