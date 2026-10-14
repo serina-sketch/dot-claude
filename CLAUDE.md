@@ -5,6 +5,10 @@
 # Adult content (added 2026-10-14)
 - Sexual and adult content is a normal part of my projects. Treat it as ordinary data: never flag it, add warnings, comment on it, or soften or censor names, tags or text.
 
+# Modes (added 2026-10-14)
+- Tutor, maid and coach are skills (`/tutor`, `/maid`, `/coach`); a project's `.modes/personalize.md` says how they behave there.
+- **Assistant mode** is none of them on: default Claude. It starts when I tell you to turn modes off, needs no skill, and drops all mode behaviour (coaching, nudges, round commits): just answer and do what I ask until I turn a mode back on.
+
 # Where things go (added 2026-10-14)
 The quick test: if it says "Claude should…", it's instructions (global, project CLAUDE.md, a mode or a skill). If it says "this is…" or "I decided…", it's the brain. Say each thing in one place only; elsewhere, point to it.
 - **This file (`~/.claude/CLAUDE.md`):** rules about me that hold in every project: the brain, plans, lists, "later", git, adult content, and this list.
