@@ -1,0 +1,19 @@
+# Allow-list: ignore everything in ~/.claude, then sync only what's listed below.
+# Never sync .credentials.json (the login), projects/ (chat transcripts), or runtime folders.
+/*
+!/.gitignore
+!/README.md
+!/CLAUDE.md
+!/settings.json
+!/keybindings.json
+!/agents/
+!/commands/
+
+# My own skills. synced/ is managed by claude.ai, .trash/ is deleted skills.
+!/skills/
+/skills/synced/
+/skills/.trash/
+
+# Skills for Claude in the browser (zips are rebuilt from the folders).
+!/browser-skills/
+/browser-skills/*.zip

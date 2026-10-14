@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(git add -A)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); dotnet build -nologo 2>$null)",
+      "PowerShell(git config --local user.email)",
+      "PowerShell(git config --global user.email)",
+      "PowerShell(git config user.name)"
+    ]
+  },
+  "model": "opus",
+  "enabledPlugins": {
+    "vibe-wise@anthropic-plugin-directory": true
+  },
+  "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    },
+    "claude-sonnet-5-5": {
+      "effortLevel": "low"
+    }
+  },
+  "autoUpdatesChannel": "latest",
+  "theme": "dark"
+}
