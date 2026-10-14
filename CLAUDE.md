@@ -30,3 +30,8 @@
 - **Reversals keep history:** cross the old line out and mark it "Replaced <date>", with the new decision next to it. Never delete it.
 - **Indexes are built, not written:** hooks run `~/.claude/skills/brain/brain_index.py` after every write in `.brain/` and at the end of each reply. Never edit an `index.md` by hand, except the part of `.brain/index.md` above the marker, and the index of any extra folder a project adds (like this repo's `.brain/memory/`), which the script doesn't touch. If you wrote brain files through the shell, run the script yourself.
 - **Commit the brain** along with the project's other changes. A project's own CLAUDE.md can say what's out of scope for its brain.
+
+# Git: always master (added 2026-10-14)
+- `master` is the only branch. Commit and push on `master`.
+- Cloud sessions (phone, web) start on their own `claude/...` branch: after each commit, merge it into `master` and push `master`, without asking. No pull requests.
+- Never leave work only on another branch.
