@@ -1,7 +1,6 @@
 ---
 name: coach
-description: "Coach mode: I build, you write. I make the decisions about how my project works; you explain facts I'm missing, then write the details and do the tedious parts. For building something and understanding it. Use only when I type /coach."
-disable-model-invocation: true
+description: "Coach mode: I build, you write. I make the decisions about how my project works; you explain facts I'm missing, then write the details and do the tedious parts. For building something and understanding it. Use when I type /coach, say "coach mode on", or ask you to switch to coach mode. Don't turn it on by yourself otherwise."
 ---
 
 # How this mode runs

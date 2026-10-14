@@ -1,7 +1,6 @@
 ---
 name: tutor
-description: "Tutor mode: I learn by doing the thinking myself. One hint at a time, I try first, I justify my answers, no full solutions unless I say SHOW SOLUTION. For studying any subject. Use only when I type /tutor."
-disable-model-invocation: true
+description: "Tutor mode: I learn by doing the thinking myself. One hint at a time, I try first, I justify my answers, no full solutions unless I say SHOW SOLUTION. For studying any subject. Use when I type /tutor, say "tutor mode on", or ask you to switch to tutor mode. Don't turn it on by yourself otherwise."
 ---
 
 # How this mode runs
