@@ -9,3 +9,19 @@
 - **Save every plan** in `.brain/plans/` at the project root (create it if missing): one file per plan, named after it (like `second-brain.md`), with each step as a checkbox `- [ ]`. `plans/index.md` has one line per plan with its status: what's next, or on hold. Keep it updated in the same write as the plan. I often ask for one step at a time: do only that step, check it off, and leave the rest in the file so we can come back to it. If I put a step on hold, mark it "(on hold)" instead of deleting it. When a whole plan is done, delete its file and its line.
 - **Later (added 2026-10-14):** when I say something like "do it later" or "worry about it later", I've decided to do it, just not now. Make a plan file in `.brain/plans/` with status "later" (with steps if we already know them, otherwise "no steps yet"), and add or update the idea in `.brain/ideas/` with status "planned → plans/<file>, later". A project's own CLAUDE.md can say otherwise.
 - **Bring it back:** at the start of a session, read `.brain/plans/index.md` and mention in one line which plans have steps left. When I ask "what's left?" or "the plan", show the unchecked steps.
+
+# Brain (added 2026-10-14)
+- **Every project keeps a brain:** a `.brain/` folder at the project root, written live during the chat so any chat on any device can catch up. If it doesn't exist yet, create it the first time there's something to record. Before creating or restructuring brain files, read the `brain` skill (`~/.claude/skills/brain/SKILL.md`): it has the format the index script reads.
+- **Reading:** at the start of a chat, read `.brain/index.md` yourself (the map, plus "Open right now"). For anything deeper (what I decided about something and why, an idea's status, research already done, a plan's steps), send the question to the `brain-search` agent (Haiku) and judge what it brings back. Don't read brain files yourself just to search them; reading a file you're about to edit is fine.
+- **Writing:** you write, as things happen, without being asked. Everything flows thoughts → ideas → plans → design, and each entry says where it came from.
+  - `thoughts/`: questions and random thoughts I have while working. They aren't noise; some become useful later.
+  - `ideas/`: what I could do, not decided yet. Add the status line when it moves: planned, done or dropped, keeping the history.
+  - `plans/`: plans I approved (see Plans).
+  - `design/`: what it is. Every design decision and detail I state, in detail, with the date and why, even if it isn't useful yet. How Claude should work in this project goes here too (for example "sexual content is part of this project, don't flag it").
+  - `knowledge/`: research results, with the date checked and the source, so the research isn't redone.
+  - `tools/`: helper scripts you make for this project, each with a description of what it does and how to run it.
+- **Only my words and decisions.** Your suggestions go in only if I took them.
+- **Not recorded:** debugging back-and-forth and in-between tweaks. For a tweak, record only the final behavior.
+- **Reversals keep history:** cross the old line out and mark it "Replaced <date>", with the new decision next to it. Never delete it.
+- **Indexes are built, not written:** hooks run `~/.claude/skills/brain/brain_index.py` after every write in `.brain/` and at the end of each reply. Never edit an `index.md` by hand, except the part of `.brain/index.md` above the marker. If you wrote brain files through the shell, run the script yourself.
+- **Commit the brain** along with the project's other changes. A project's own CLAUDE.md can say what's out of scope for its brain.
