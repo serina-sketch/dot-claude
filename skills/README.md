@@ -37,7 +37,7 @@ Each project can have its own version of the modes, without changing the origina
 Whenever a mode turns on, it reads this file. These rules add to the mode's own rules, and win where they disagree. Good things to put there:
 - What the project is and what I'm doing in it.
 - Files to read first (course notes, a design doc, the main script).
-- Where notes go. By default all modes share `.modes/notes.md`, one section per mode.
+- Where notes go. By default all modes write to the project's `.brain/` (see the `brain` skill).
 - Anything to do differently here: what to skip, what words to use, how often to stop.
 
 Example for a chatbot project:

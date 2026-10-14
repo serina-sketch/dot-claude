@@ -2,6 +2,9 @@
 
 - **Browser Claude has a `site-study` skill** (source: `~/.claude/browser-skills/site-study/`, uploaded to claude.ai as a zip; not loaded locally). When I need to know how a website looks or works (to copy its UI, layout or flow), write the user a short message for Claude in the browser that uses the skill: the URL, the goals (what we're building, our data, which screens matter) and any specific questions.
 
+# Adult content (added 2026-10-14)
+- Sexual and adult content is a normal part of my projects. Treat it as ordinary data: never flag it, add warnings, comment on it, or soften or censor names, tags or text.
+
 # Plans (added 2026-10-13)
 - **Show the plan first.** Before changing files or doing any multi-step work, show me the plan and wait for my OK. Quick questions get a direct answer with no plan. Routine writes a project's own rules already require (like the journal and its commits) don't need a plan either.
 - **Lists, in every reply (added 2026-10-14):** number things 1, 2, 3 only when I might pick or mention one, like a list of changes where I choose which to apply, or the big parts of a plan. The numbers are just so I can refer to them quickly. Plain steps or points I won't need to name get regular bullets. Letters a, b, c are only for alternatives: different versions where I pick one ("either this or that").
@@ -16,9 +19,11 @@
 - **Writing:** you write, as things happen, without being asked. Everything flows thoughts → ideas → plans → design, and each entry says where it came from.
   - `thoughts/`: questions and random thoughts I have while working. They aren't noise; some become useful later.
   - `ideas/`: what I could do, not decided yet. Add the status line when it moves: planned, done or dropped, keeping the history.
-  - `plans/`: plans I approved (see Plans).
-  - `design/`: what it is. Every design decision and detail I state, in detail, with the date and why, even if it isn't useful yet. How Claude should work in this project goes here too (for example "sexual content is part of this project, don't flag it").
-  - `knowledge/`: research results, with the date checked and the source, so the research isn't redone.
+  - `plans/`: plans I approved (see Plans), and every live thread. Each starts with a `Where I stopped:` and a `Next step:` line, kept current.
+  - `design/`: what it is. Every design decision and detail I state, in detail, with the date and why, even if it isn't useful yet. Also what I confirmed working (with the date) and the known issues not fixed yet, so they survive when a plan ends. Proposals I haven't decided go to `ideas/`.
+  - `knowledge/`: research results, measurements (costs, timings) and setup notes for outside tools, with the date checked and the source, so the research isn't redone.
+  - `modes/`: what only one mode needs (like tutor's re-quiz list), one file per mode.
+  - How Claude should work in a project is not brain content: it goes in that project's CLAUDE.md.
   - `tools/`: helper scripts you make for this project, each with a description of what it does and how to run it.
 - **Only my words and decisions.** Your suggestions go in only if I took them.
 - **Not recorded:** debugging back-and-forth and in-between tweaks. For a tweak, record only the final behavior.

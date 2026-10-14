@@ -23,6 +23,7 @@ FOLDERS = {
     "design": "What it is: every design decision, with the date and why.",
     "knowledge": "Research results, with the date checked and the source.",
     "tools": "Claude's helper scripts for this project, from each script's own description.",
+    "modes": "What only one mode needs (tutor's re-quiz list, coach's learning record), one file per mode.",
 }
 HEADER = "*{} Built by `brain_index.py`; don't edit by hand.*"
 
@@ -76,6 +77,13 @@ def dated(text):
     return ", ".join(bits)
 
 
+def issues(text):
+    """'2 known issues' from a '## Known issues' section."""
+    m = re.search(r"^## Known issues\s*$(.*?)(?=^## |\Z)", text, flags=re.M | re.S)
+    n = len(re.findall(r"^- ", m.group(1), flags=re.M)) if m else 0
+    return f"{n} known issue{'s' if n != 1 else ''}" if n else ""
+
+
 def ideas(folder):
     """Every idea (## heading) with its status line, grouped by the latest status."""
     groups = {"open": [], "planned": [], "done": [], "dropped": []}
@@ -96,6 +104,11 @@ def ideas(folder):
     return out, groups
 
 
+def field(text, name):
+    m = re.search(rf"^- \*\*{name}:\*\*\s*(.+)$", text, flags=re.M)
+    return m.group(1).strip() if m else ""
+
+
 def plans(folder):
     lines, open_plans = [], []
     for p in notes(folder):
@@ -106,10 +119,11 @@ def plans(folder):
         steps = f"{todo} of {todo + done} steps left" if todo + done else "no steps yet"
         if held:
             steps += f", {held} on hold"
-        lines.append(entry(p, text, steps))
+        nxt = field(text, "Next step")
+        lines.append(entry(p, text, steps) + (f"\n  - Next step: {nxt}" if nxt else ""))
         title, summary = title_and_summary(text, p.stem)
         if todo > held or not todo + done:
-            open_plans.append(f"- [{title}](plans/{p.name}): {steps}")
+            open_plans.append(f"- [{title}](plans/{p.name}): " + (f"next: {nxt}" if nxt else steps))
     return lines, open_plans
 
 
@@ -147,6 +161,8 @@ def build(brain):
             out += body + [""]
         elif name == "tools":
             out += tools(folder)
+        elif name == "design":
+            out += [entry(p, t, ", ".join(x for x in [dated(t), issues(t)] if x)) for p in notes(folder) for t in [p.read_text(encoding="utf-8")]] + [""]
         else:
             out += [entry(p, t, dated(t)) for p in notes(folder) for t in [p.read_text(encoding="utf-8")]] + [""]
         write(folder / "index.md", "\n".join(out).rstrip() + "\n")

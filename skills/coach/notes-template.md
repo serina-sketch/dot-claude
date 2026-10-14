@@ -1,6 +1,6 @@
 # Coach mode — project notes template
 
-Copy this into the project's Coach notes (the `## Coach` section of `.modes/notes.md` by default, one `###` per project, each heading one level down) the first time. Fill each part with what's actually true, or "not specified." Never replace an existing notes file with a fresh copy.
+Copy this into the project's coach notes (`.brain/modes/coach.md` by default, one `##` per project, each heading one level down) the first time. Fill each part with what's actually true, or "not specified." Never replace an existing notes file with a fresh copy.
 
 ```markdown
 # <Project name>

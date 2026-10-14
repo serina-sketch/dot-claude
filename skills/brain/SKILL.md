@@ -23,7 +23,11 @@ Every file starts with `# Title`, then one line in italics saying what it holds.
 - **ideas/**: one file per topic. Each idea is a `## Name`, followed by a status line:
   `- **Status:** planned 2026-10-14 → plans/<file>.md`
   No status line means it's still just an idea. Statuses: planned, done, dropped. Keep the history on the same line: `planned 10-14 → dropped 10-16 (reason) → planned 10-20`. The ideas index groups every idea by its latest status.
-- **plans/**: one file per plan. The italic line says `Made <date>. Status: <...>.` Steps are checkboxes `- [ ]` / `- [x]`; a paused step is `- [ ] (on hold) ...`. The index counts steps left. A plan for later with no steps yet is fine.
-- **design/**: one file per topic. Every decision with its date and why. A reversal keeps the old line crossed out with `Replaced <date>`.
-- **knowledge/**: one file per topic. Each finding is a `## Heading (checked <date>)` with its source.
+- **plans/**: one file per plan or live thread. The italic line says `Made <date>. Status: <...>.` Then two lines the index shows:
+  `- **Where I stopped:** ...`
+  `- **Next step:** ...`
+  Steps are optional checkboxes `- [ ]` / `- [x]`; a paused step is `- [ ] (on hold) ...`. The index counts steps left. A plan for later with no steps yet is fine. When a plan is done or dropped, delete it; its idea keeps the history and design keeps the decisions.
+- **design/**: one file per topic: what it is right now. Every decision with its date and why. A reversal keeps the old line crossed out with `Replaced <date>`. Optional sections `## Confirmed working` (what I tested, with the date) and `## Known issues` (small bugs not fixed yet, one `- ` line each; the index counts them), so they survive when a plan ends. Proposals that aren't decided go to ideas/, not here.
+- **knowledge/**: one file per topic. Each finding is a `## Heading (checked <date>)` with its source. Measurements (costs, timings) and setup commands for outside tools go here too.
+- **modes/**: one file per mode (`tutor.md`, `coach.md`, ...) for what only that mode needs.
 - **tools/**: scripts. Each one starts with a docstring (Python) or comment block saying what it does and how to run it.

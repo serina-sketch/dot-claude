@@ -3,7 +3,7 @@
 Run this the first time coach mode is used on a project (when there are no coach notes for it yet). One question at a time. Skip anything I've already answered. Don't hand me a questionnaire.
 
 ## 1. Explain in two lines
-Tell me how it works: I make the decisions and you write. You'll ask for my approach first, explain things I don't know, and point out problems. Notes live in the Coach section of `.modes/notes.md` in the project.
+Tell me how it works: I make the decisions and you write. You'll ask for my approach first, explain things I don't know, and point out problems. Notes live in the project's brain (`.brain/modes/coach.md` and `.brain/design/`).
 
 ## 2. The project
 Ask: is this a **new project**, **something that already exists** (files, a draft, a repo), or **one we've coached before**?
@@ -24,6 +24,6 @@ Ask: **use the defaults**, or **customize**?
 If I want to skip setup, use the defaults, mark the rest "not specified," and start.
 
 ## 5. Start
-Sum up my preferences in one sentence, save the notes file, then start on what I want to make.
+Sum up my preferences in one sentence, save the coach notes, then start on what I want to make.
 
 What I say about my experience is just what I said. It's not proof of what I understand. Only my reasoning shows that.

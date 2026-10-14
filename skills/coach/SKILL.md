@@ -7,10 +7,10 @@ disable-model-invocation: true
 # How this mode runs
 - It stays on for the rest of the conversation, until I say "coach mode off" or turn on another mode (/tutor or /maid). When it turns on or off, confirm in one short line.
 - **This project's version:** before starting, look for `.modes/personalize.md` in the project's root folder. If it exists, read its "All modes" part and its "Coach" part. Those rules add to the ones below, and win where they disagree.
-- **Notes:** all modes share one notes file, `.modes/notes.md` in the project (make it, or a missing section, when needed). `## All modes` holds what every mode should know about the project right now (what it is, where things stand); `## Coach` holds what only this mode needs (its live threads, where to pick up). Keep notes immediate; things for later go in a `## Backlog` or `## Later` section. `.modes/personalize.md` can change where notes go. If the project still has an old `.modes/coach-notes.md`, read it, and move its content into `notes.md` the first time you write notes.
+- **Notes live in the brain:** the project's `.brain/` (the Brain rule in the global CLAUDE.md, and the `brain` skill for the format). Each live thread is a plan in `.brain/plans/` that starts with `Where I stopped:` and `Next step:` lines; decisions go to `.brain/design/`, undecided ideas to `.brain/ideas/`, research to `.brain/knowledge/`. Things for later become a plan marked "later". What only this mode needs goes in `.brain/modes/coach.md`. The project's CLAUDE.md or `.modes/personalize.md` can say notes go somewhere else. If the project still has an old `.modes/notes.md` (or `.modes/coach-notes.md`), read it too; move its content into the brain when I ask.
 - **Clear instruction → just do it.** When I tell you plainly what I want done, and the decision behind it is already mine, do it without extra checkpoints. Keep asking and suggesting when I'm vague, when a new design decision comes up, or when something I asked for has a real problem.
-- **Use `.modes/` freely.** Create, split, rename or delete files and folders in the project's `.modes/` as needed. In particular, keep a design file per project or piece (`.modes/design/<name>.md`) recording how I want it to be: every decision I made (marked "decided") and anything you only proposed (marked "proposed"), so later changes stay consistent. Read the matching design file before changing that thing, and add to it whenever I decide something. Point to it from the notes.
-- **Names change.** I rename projects, folders and files often. Match things by what they are, not by their exact name, and update the notes when a name changes.
+- **Design files:** keep a design file per project or piece (`.brain/design/<name>.md`) recording how I want it to be: every decision I made, with the date and why, plus what's confirmed working and the known issues. Anything you only proposed goes to `.brain/ideas/`, not into design. Read the matching design file before changing that thing, and add to it whenever I decide something. `.modes/personalize.md` stays in `.modes/`: it's how this mode behaves in this project.
+- **Names change.** I rename projects, folders and files often. Match things by what they are, not by their exact name, and update the brain when a name changes.
 - **"Personalize coach mode":** if I say this, set up `.modes/personalize.md` for this project. Ask me one question at a time: what this project is, what I'm trying to do here, and anything this mode should do differently here (what to call things, what to skip, where notes go, what files to read first). At most three questions, then write the file in this layout and show it to me in full:
 
   ```markdown
@@ -36,7 +36,7 @@ Why: when the AI decides everything, I can finish a project and still not unders
 Adapted from the VibeWise plugin by nykooi1 (MIT license), rewritten for any kind of project.
 
 ## Starting
-- When coach mode turns on, look for this project's notes (the Coach section of `.modes/notes.md`, or wherever `.modes/personalize.md` says).
+- When coach mode turns on, look for this project's coach notes (`.brain/modes/coach.md`, plus the design files in `.brain/design/`, or wherever `.modes/personalize.md` says).
 - **No notes yet:** run the short setup in `setup.md`, then make the Coach notes from `notes-template.md` (both next to this file).
 - **Notes exist:** read them, especially any **pending decision**. Pick up exactly where we stopped. Don't redo setup, and don't skip past a decision I hadn't made yet.
 
@@ -80,10 +80,10 @@ Give a short report: what you made, where, how the key part works, and why it fi
 - More help when it's new to me, less when I've shown I know it. Skip explanations I've mastered, but never skip a new decision.
 - Respect "just do this one," "skip," or "fewer checkpoints." Those are my calls.
 - **"Pause coaching"** stops the checkpoints but keeps the notes. "Coach mode on" resumes from them.
-- **"Reset coaching"** for a project: show me what will be cleared and ask first. If I confirm, save the old notes under `.modes/backups/`, then start setup fresh. My actual work is never touched.
+- **"Reset coaching"** for a project: show me what will be cleared and ask first. If I confirm, save the old notes under `.brain/modes/backups/`, then start setup fresh. My actual work is never touched.
 
 ## Memory
-Keep the project's notes in the notes file, using the layout in `notes-template.md`. Update them as we go:
+Keep the project's coach notes in `.brain/modes/coach.md`, using the layout in `notes-template.md`. The decisions themselves also go to `.brain/design/`, and an open choice to `.brain/ideas/`. Update them as we go:
 - What I've decided, what you only proposed, and what's actually made. Keep these three apart.
 - What I've shown I understand, versus things you only explained.
 - Any **pending decision**: what's waiting and what reply you need. Remove it once it's settled.
