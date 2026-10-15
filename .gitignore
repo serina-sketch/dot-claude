@@ -6,6 +6,7 @@
 !/.brain/
 !/CLAUDE.md
 !/settings.json
+!/git_sync.py
 !/keybindings.json
 !/agents/
 !/commands/
