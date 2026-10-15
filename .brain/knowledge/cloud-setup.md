@@ -12,6 +12,7 @@
   [ -n "$DOT_CLAUDE_TOKEN" ] && U="https://x-access-token:${DOT_CLAUDE_TOKEN}@github.com/serina-sketch/dot-claude.git"
   git clone -q "$U" /tmp/dot-claude && mkdir -p ~/.claude && cp -r /tmp/dot-claude/. ~/.claude/ || true
   ```
+- **Writing to dot-claude from a cloud session (checked 2026-10-15):** the read-only token is enough. When a change is needed, Claude attaches `dot-claude` partway through the session with write access (the `add_repo` tool), clones it to `/home/user/dot-claude`, commits and pushes there, then pulls into `~/.claude` (`bash .claude/cloud.sh sync`) to get the new version. Tested on 2026-10-15 from claude-assistant on the phone: a push dry-run went through. No write token and no need to make the repo public. The attachment only lasts for that session. If editing dot-claude from cloud gets frequent, I'm considering adding a write token as well.
 - **The repo's own hooks** do the rest: `.claude/settings.json` calls `.claude/cloud.sh` at session start (`sync`: pulls the latest `dot-claude`, so changes arrive despite the cache) and after every Write/Edit and at the end of each reply (`brain`: runs `brain_index.py`). `cloud.sh` exits at once unless `CLAUDE_CODE_REMOTE` is `true`, so on the PC it does nothing (there `~/.claude`'s own hooks run).
 - The environment variable and the setup script belong to the environment, so they already cover every repo. Only the two hook files are per repo.
 
