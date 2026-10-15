@@ -67,3 +67,4 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 
 # Cloud sessions (added 2026-10-14)
 - How my setup reaches phone and web sessions, and how to turn it on for another repo: `~/.claude/.brain/knowledge/cloud-setup.md`.
+- **Other repos on cloud (added 2026-10-15):** when a task needs another of my repos (to read it or change it), attach it to the session yourself (the `add_repo` tool, with write access to change it), clone it next to the current one, make the changes, then commit and push following that repo's own CLAUDE.md (mimitabi: only when I ask). After changing `dot-claude`, pull it into `~/.claude` (`bash .claude/cloud.sh sync`).
