@@ -39,7 +39,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python \"$HOME/.claude/git_sync.py\" post-tool"
+            "command": "f=\"$HOME/.claude/git_sync.py\"; [ -f \"$f\" ] || exit 0; python \"$f\" post-tool"
           }
         ]
       }
@@ -59,7 +59,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python \"$HOME/.claude/git_sync.py\" start"
+            "command": "f=\"$HOME/.claude/git_sync.py\"; [ -f \"$f\" ] || exit 0; python \"$f\" start"
           }
         ]
       }
@@ -70,7 +70,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python \"$HOME/.claude/git_sync.py\" pre-tool"
+            "command": "f=\"$HOME/.claude/git_sync.py\"; [ -f \"$f\" ] || exit 0; python \"$f\" pre-tool"
           }
         ]
       }
