@@ -1,20 +1,14 @@
-"""Keep Rain's repos in sync with GitHub (hook script).
+"""Pull the latest master into Rain's open repos when a chat starts (hook script).
 
 What it does: for each repo it covers, fetches origin and merges the default
 branch (master or main) into the current branch. A merge that would conflict
 is aborted, never forced, and reported.
 
 Which repos: the repo of the current folder, the folders listed in its
-*.code-workspace file, every sibling repo in the same
-parent folder whose origin is on serina-sketch's GitHub, and ~/.claude
-(dot-claude). This covers VS Code workspaces with several folders open.
+*.code-workspace file, and ~/.claude (dot-claude).
 
-How to run (hooks call it; reads hook JSON on stdin when present):
-  python git_sync.py start        # SessionStart: sync all, report to Claude
-  python git_sync.py pre-tool     # PreToolUse Bash: before git commit/push,
-                                  # sync all; block (exit 2) on a conflict
-  python git_sync.py post-tool    # PostToolUse Bash: after git push, check
-                                  # the repo matches origin
+How to run (the SessionStart hook calls it; reads hook JSON on stdin):
+  python git_sync.py
 """
 import json
 import os
@@ -58,15 +52,6 @@ def find_repos(cwd):
                         repos.append(repo_root(p))
     except (OSError, ValueError):
         pass
-    # Fallback: repos in the same parent folder.
-    parent = os.path.dirname(root)
-    try:
-        for name in sorted(os.listdir(parent)):
-            p = os.path.join(parent, name)
-            if os.path.isdir(os.path.join(p, ".git")):
-                repos.append(os.path.normpath(p))
-    except OSError:
-        pass
     home_claude = os.path.join(os.path.expanduser("~"), ".claude")
     if os.path.isdir(os.path.join(home_claude, ".git")):
         repos.append(os.path.normpath(home_claude))
@@ -86,79 +71,34 @@ def default_branch(repo):
 
 
 def sync(repo):
-    """Return (ok, message or None)."""
+    """Return a message, or None when there was nothing to do."""
     name = os.path.basename(repo)
     code, out = git(repo, "fetch", "-q", "origin")
     if code != 0:
-        return True, f"{name}: fetch failed ({out.splitlines()[-1] if out else 'no output'})"
+        return f"{name}: fetch failed ({out.splitlines()[-1] if out else 'no output'})"
     base = default_branch(repo)
     if not base:
-        return True, None
+        return None
     code, behind = git(repo, "rev-list", "--count", f"HEAD..origin/{base}")
     if code != 0 or behind == "0":
-        return True, None
+        return None
     code, out = git(repo, "merge", "--no-edit", f"origin/{base}")
     if code == 0:
-        return True, f"{name}: pulled {behind} new commit(s) from {base}"
+        return f"{name}: pulled {behind} new commit(s) from {base}"
     git(repo, "merge", "--abort")
-    return False, (f"{name}: {base} has {behind} new commit(s) that conflict with "
-                   f"local changes; merge aborted, nothing changed. Resolve before writing.")
-
-
-def sync_all(cwd):
-    ok, msgs = True, []
-    for repo in find_repos(cwd):
-        r_ok, msg = sync(repo)
-        ok = ok and r_ok
-        if msg:
-            msgs.append(msg)
-    return ok, msgs
-
-
-def read_hook():
-    try:
-        return json.load(sys.stdin) if not sys.stdin.isatty() else {}
-    except Exception:
-        return {}
+    return (f"{name}: {base} has {behind} new commit(s) that conflict with "
+            f"local changes; merge aborted, nothing changed. Resolve before writing.")
 
 
 def main():
-    mode = sys.argv[1] if len(sys.argv) > 1 else "start"
-    data = read_hook()
+    try:
+        data = json.load(sys.stdin) if not sys.stdin.isatty() else {}
+    except Exception:
+        data = {}
     cwd = data.get("cwd") or os.getcwd()
-    cmd = (data.get("tool_input") or {}).get("command", "")
-
-    if mode == "start":
-        ok, msgs = sync_all(cwd)
-        if msgs:
-            print("Git sync: " + " | ".join(msgs))
-        return 0
-
-    if mode == "pre-tool":
-        if "git commit" not in cmd and "git push" not in cmd:
-            return 0
-        ok, msgs = sync_all(cwd)
-        if not ok:
-            print("Git sync: " + " | ".join(msgs), file=sys.stderr)
-            return 2
-        if msgs:
-            print("Git sync: " + " | ".join(msgs), file=sys.stderr)
-        return 0
-
-    if mode == "post-tool":
-        if "git push" not in cmd:
-            return 0
-        repo = repo_root(cwd)
-        if not repo:
-            return 0
-        git(repo, "fetch", "-q", "origin")
-        code, out = git(repo, "status", "-sb")
-        first = out.splitlines()[0] if out else ""
-        if "behind" in first or "ahead" in first:
-            print(f"Git sync: after push, {os.path.basename(repo)} still differs from origin: {first}",
-                  file=sys.stderr)
-            return 2
-        return 0
+    msgs = [m for m in (sync(r) for r in find_repos(cwd)) if m]
+    if msgs:
+        print("Git sync: " + " | ".join(msgs))
     return 0
 
 

@@ -29,6 +29,7 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 
 # Brain (added 2026-10-14)
 - **Every project keeps a brain:** a `.brain/` folder at the project root, written live during the chat so any chat on any device can catch up. If it doesn't exist yet, create it the first time there's something to record. Before creating or restructuring brain files, read the `brain` skill (`~/.claude/skills/brain/SKILL.md`): it has the format the index script reads.
+- **Other repos' brains (added 2026-10-15):** before working with a file in another repo or folder, check whether it has a `.brain/` and read its `index.md` first; work about that repo is recorded in its brain. A hook (`skills/brain/brain_peek.py`) shows it automatically the first time a Read, Edit, Write, Glob or Grep touches that repo; through the shell, check it yourself.
 - **Reading:** at the start of a chat, read `.brain/index.md` yourself (the map, plus "Open right now"). For anything deeper (what I decided about something and why, an idea's status, research already done, a plan's steps), send the question to the `brain-search` agent (Haiku) and judge what it brings back. Don't read brain files yourself just to search them; reading a file you're about to edit is fine.
 - **Writing:** you write, as things happen, without being asked. Everything flows thoughts → ideas → plans → design, and each entry says where it came from.
   - `thoughts/`: questions and random thoughts I have while working. They aren't noise; some become useful later.
@@ -49,7 +50,7 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 - `master` is the only branch (the `writing` repo calls it `main`): every commit goes there and gets pushed. *When* to commit is up to each project's `CLAUDE.md` (claude-assistant: right after every write; chatbot: at the end of a round; mimitabi: only when I ask).
 - Cloud sessions (phone, web) start on their own `claude/...` branch: after each commit, merge it into `master` and push `master`, without asking. No pull requests.
 - Never leave work only on another branch.
-- **Auto-sync (added 2026-10-15):** hooks run `git_sync.py`, which pulls the latest `master` into every one of my repos at session start and before each commit or push (the current repo, every folder in the workspace file at its root, sibling repos as a fallback, and `~/.claude`). If it reports a conflict, stop and tell me before writing anything.
+- **Auto-sync (added 2026-10-15, narrowed the same day):** at session start a hook runs `git_sync.py`, which pulls the latest `master` into the current repo, every folder in the `.code-workspace` file at its root, and `~/.claude`. If it reports a conflict, stop and tell me before writing anything. If a push is rejected because `master` moved, pull and push again.
 
 # Subagents (added 2026-10-14)
 - **Haiku subagents always run at low effort** (`effort: "low"`).
