@@ -20,4 +20,4 @@ The work that built most of this happened in claude-assistant (its plans, ideas 
 - none
 
 **Ideas not decided yet:**
-- none
+- **A skill for easy explanations** ([explain-simply.md](ideas/explain-simply.md))
