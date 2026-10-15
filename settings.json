@@ -33,6 +33,15 @@
             "command": "python \"$HOME/.claude/skills/brain/brain_index.py\" --hook"
           }
         ]
+      },
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$HOME/.claude/git_sync.py\" post-tool"
+          }
+        ]
       }
     ],
     "Stop": [
@@ -41,6 +50,27 @@
           {
             "type": "command",
             "command": "python \"$HOME/.claude/skills/brain/brain_index.py\" --hook"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$HOME/.claude/git_sync.py\" start"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$HOME/.claude/git_sync.py\" pre-tool"
           }
         ]
       }

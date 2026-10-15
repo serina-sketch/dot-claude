@@ -49,6 +49,7 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 - `master` is the only branch (the `writing` repo calls it `main`): every commit goes there and gets pushed. *When* to commit is up to each project's `CLAUDE.md` (claude-assistant: right after every write; chatbot: at the end of a round; mimitabi: only when I ask).
 - Cloud sessions (phone, web) start on their own `claude/...` branch: after each commit, merge it into `master` and push `master`, without asking. No pull requests.
 - Never leave work only on another branch.
+- **Auto-sync (added 2026-10-15):** hooks run `git_sync.py`, which pulls the latest `master` into every one of my repos at session start and before each commit or push (the current repo, its sibling repos, and `~/.claude`). If it reports a conflict, stop and tell me before writing anything.
 
 # Subagents (added 2026-10-14)
 - **Haiku subagents always run at low effort** (`effort: "low"`).
