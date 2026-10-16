@@ -12,7 +12,11 @@ Next step: on the PC, check the cloud environment's setup script and the startup
 - Workaround that worked: merge `origin/master` into the session branch, then `git push origin HEAD:master`.
 - Guess, not confirmed: the startup step that downloads dot-claude into `~/.claude` (`.claude/cloud.sh sync`, the setup script or `git_sync.py`) runs a git command inside the claude-assistant folder.
 
+## Fix options (2026-10-16)
+- Cloning the repo again mid-session would give a correct copy, but in a different folder from the one the session runs in, so CLAUDE.md, hooks and settings would still point at the old copy.
+- A one-line fix makes it harmless: at session start, reset the local master to GitHub's (`git branch -f master origin/master`), for example in `cloud.sh sync`. I decided to leave all fixes for the PC.
+
 ## Steps
 - [ ] Read the cloud environment's setup script and the SessionStart hooks; find the command that writes dot-claude into this repo's refs
-- [ ] Fix it
+- [ ] Fix it (the one-line reset, or the root cause)
 - [ ] Decide whether the cloud git rule in `CLAUDE.md` should change to `git push origin HEAD:master`
