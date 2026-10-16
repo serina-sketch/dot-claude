@@ -17,7 +17,8 @@ The work that built most of this happened in claude-assistant (its plans, ideas 
 ## Open right now
 
 **Plans with steps left:**
-- none
+- [Cloud sessions start with the wrong local master](plans/cloud-stale-master.md): 3 of 3 steps left
 
 **Ideas not decided yet:**
+- **Fix the stale local master in cloud sessions** ([cloud-git.md](ideas/cloud-git.md))
 - **A skill for easy explanations** ([explain-simply.md](ideas/explain-simply.md))

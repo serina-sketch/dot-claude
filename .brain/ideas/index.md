@@ -4,6 +4,7 @@
 
 ## Open (still just ideas)
 
+- **Fix the stale local master in cloud sessions** ([cloud-git.md](cloud-git.md))
 - **A skill for easy explanations** ([explain-simply.md](explain-simply.md))
 
 ## Planned
