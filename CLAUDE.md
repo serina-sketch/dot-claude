@@ -47,7 +47,7 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 - **Commit the brain** along with the project's other changes. A project's own CLAUDE.md can say what's out of scope for its brain.
 
 # Git: always master (added 2026-10-14)
-- `master` is the only branch (the `writing` repo calls it `main`): every commit goes there and gets pushed. *When* to commit is up to each project's `CLAUDE.md` (claude-assistant: right after every write; chatbot: at the end of a round; mimitabi: only when I ask).
+- `master` is the only branch: every commit goes there and gets pushed. *When* to commit is up to each project's `CLAUDE.md` (claude-assistant: right after every write; chatbot: at the end of a round; mimitabi: only when I ask).
 - Cloud sessions (phone, web) start on their own `claude/...` branch: after each commit, merge it into `master` and push `master`, without asking. No pull requests.
 - Never leave work only on another branch.
 - **Auto-sync (added 2026-10-15, narrowed the same day):** at session start a hook runs `git_sync.py`, which pulls the latest `master` into the current repo, every folder in the `.code-workspace` file at its root, and `~/.claude`. If it reports a conflict, stop and tell me before writing anything. If a push is rejected because `master` moved, pull and push again.

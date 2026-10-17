@@ -6,3 +6,4 @@
 - [dotfiles.md](dotfiles.md): **My Claude setup on every device**. Decisions about syncing my global Claude Code setup, and why. (1 entry, newest 2026-10-14)
 - [git-sync.md](git-sync.md): **Git auto-sync across repos** (1 entry, newest 2026-10-15)
 - [plans.md](plans.md): **How plans work**. Decisions about plans, with the date and why. The rule itself is in the global CLAUDE.md. (newest 2026-10-14)
+- [repos.md](repos.md): **Repos**. Which of my repos exist or were retired, and why, as far as the global rules mention them. (1 entry, newest 2026-10-16)
