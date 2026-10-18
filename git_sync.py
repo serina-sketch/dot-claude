@@ -96,9 +96,14 @@ def main():
     except Exception:
         data = {}
     cwd = data.get("cwd") or os.getcwd()
-    msgs = [m for m in (sync(r) for r in find_repos(cwd)) if m]
+    repos = find_repos(cwd)
+    msgs = [m for m in (sync(r) for r in repos) if m]
+    # Always print a line, so a quiet run can be told apart from no run.
     if msgs:
         print("Git sync: " + " | ".join(msgs))
+    else:
+        print(f"Git sync: {len(repos)} repo(s) up to date "
+              f"({', '.join(os.path.basename(r) or r for r in repos)})")
     return 0
 
 

@@ -9,20 +9,6 @@
     ]
   },
   "model": "opus",
-  "enabledPlugins": {
-    "vibe-wise@anthropic-plugin-directory": true
-  },
-  "effortLevel": "xhigh",
-  "modelSettings": {
-    "claude-opus-5-5": {
-      "effortLevel": "medium"
-    },
-    "claude-sonnet-5-5": {
-      "effortLevel": "low"
-    }
-  },
-  "autoUpdatesChannel": "latest",
-  "theme": "dark",
   "hooks": {
     "PostToolUse": [
       {
@@ -66,5 +52,19 @@
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {
+    "vibe-wise@anthropic-plugin-directory": true
+  },
+  "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "low"
+    },
+    "claude-sonnet-5-5": {
+      "effortLevel": "low"
+    }
+  },
+  "autoUpdatesChannel": "latest",
+  "theme": "dark"
 }
