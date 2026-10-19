@@ -5,7 +5,11 @@ branch (master or main) into the current branch. A merge that would conflict
 is aborted, never forced, and reported.
 
 Which repos: the repo of the current folder, the folders listed in its
-*.code-workspace file, and ~/.claude (dot-claude).
+*.code-workspace file, and ~/.claude (dot-claude). In cloud sessions, also
+every repo of mine next to the current one (where attached repos are cloned).
+
+Cloud sessions also reset the local master to GitHub's: the container keeps
+a frozen copy of master from when the environment was first set up.
 
 How to run (the SessionStart hook calls it; reads hook JSON on stdin):
   python git_sync.py
@@ -16,6 +20,7 @@ import subprocess
 import sys
 
 OWNER = "serina-sketch"
+CLOUD = os.environ.get("CLAUDE_CODE_REMOTE") == "true"
 
 
 def git(repo, *args):
@@ -52,6 +57,17 @@ def find_repos(cwd):
                         repos.append(repo_root(p))
     except (OSError, ValueError):
         pass
+    # Cloud: repos sit side by side (/home/user/<repo>), and the chat may
+    # open in that parent folder rather than inside a repo.
+    if CLOUD:
+        parent = os.path.dirname(here) if here else os.path.abspath(cwd)
+        try:
+            for name in sorted(os.listdir(parent)):
+                p = os.path.join(parent, name)
+                if os.path.isdir(os.path.join(p, ".git")):
+                    repos.append(os.path.normpath(p))
+        except OSError:
+            pass
     home_claude = os.path.join(os.path.expanduser("~"), ".claude")
     if os.path.isdir(os.path.join(home_claude, ".git")):
         repos.append(os.path.normpath(home_claude))
@@ -70,6 +86,18 @@ def default_branch(repo):
     return None
 
 
+def fix_stale_base(repo, base):
+    """Cloud: point the local base branch at GitHub's when it isn't checked out."""
+    if git(repo, "rev-parse", "--verify", "-q", base)[0] != 0:
+        return None
+    if git(repo, "symbolic-ref", "-q", "--short", "HEAD")[1] == base:
+        return None
+    if git(repo, "rev-parse", base)[1] == git(repo, "rev-parse", f"origin/{base}")[1]:
+        return None
+    code, _ = git(repo, "branch", "-f", base, f"origin/{base}")
+    return f"reset stale local {base} to GitHub's" if code == 0 else None
+
+
 def sync(repo):
     """Return a message, or None when there was nothing to do."""
     name = os.path.basename(repo)
@@ -79,12 +107,13 @@ def sync(repo):
     base = default_branch(repo)
     if not base:
         return None
+    reset = fix_stale_base(repo, base) if CLOUD else None
     code, behind = git(repo, "rev-list", "--count", f"HEAD..origin/{base}")
     if code != 0 or behind == "0":
-        return None
+        return f"{name}: {reset}" if reset else None
     code, out = git(repo, "merge", "--no-edit", f"origin/{base}")
     if code == 0:
-        return f"{name}: pulled {behind} new commit(s) from {base}"
+        return f"{name}: pulled {behind} new commit(s) from {base}" + (f", {reset}" if reset else "")
     git(repo, "merge", "--abort")
     return (f"{name}: {base} has {behind} new commit(s) that conflict with "
             f"local changes; merge aborted, nothing changed. Resolve before writing.")

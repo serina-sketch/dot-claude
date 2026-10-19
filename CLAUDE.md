@@ -49,7 +49,7 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 
 # Git: always master (added 2026-10-14)
 - `master` is the only branch: every commit goes there and gets pushed. *When* to commit is up to each project's `CLAUDE.md` (claude-assistant: right after every write; chatbot: at the end of a round; mimitabi: only when I ask).
-- Cloud sessions (phone, web) start on their own session branch (`claude/...` or `ccr-...`): after each commit, push it straight to GitHub's `master` with `git push origin HEAD:master`, without asking. If the push is rejected, merge `origin/master` into the session branch and push again. No pull requests. Never check out or merge into the container's local `master`: it's a frozen copy from when the cloud environment was first set up, often hundreds of commits behind (changed 2026-10-19).
+- Cloud sessions: see "Git on cloud" under Cloud sessions.
 - Never leave work only on another branch.
 - **Auto-sync (added 2026-10-15, narrowed the same day):** at session start a hook runs `git_sync.py`, which pulls the latest `master` into the current repo, every folder in the `.code-workspace` file at its root, and `~/.claude`. If it reports a conflict, stop and tell me before writing anything. If a push is rejected because `master` moved, pull and push again.
 
@@ -70,4 +70,5 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 
 # Cloud sessions (added 2026-10-14)
 - How my setup reaches phone and web sessions, and how to turn it on for another repo: `~/.claude/.brain/knowledge/cloud-setup.md`.
+- **Git on cloud (changed 2026-10-19):** each chat starts on its own session branch (`claude/...` or `ccr-...`). After each commit, push it straight to GitHub's `master` with `git push origin HEAD:master`, without asking. If the push is rejected, merge `origin/master` into the session branch and push again. No pull requests. Never check out or merge into the container's local `master`: it's a frozen copy from when the cloud environment was set up (`git_sync.py` resets it at chat start, but don't rely on that).
 - **Other repos on cloud (added 2026-10-15):** when a task needs another of my repos (to read it or change it), attach it to the session yourself (the `add_repo` tool, with write access to change it), clone it next to the current one, make the changes, then commit and push following that repo's own CLAUDE.md (mimitabi: only when I ask). After changing `dot-claude`, pull it into `~/.claude` (`bash .claude/cloud.sh sync`).
