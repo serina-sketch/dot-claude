@@ -11,7 +11,7 @@ Two halves: **save** at the end of a chat, **resume** at the start of the next. 
 
 Do all of it without asking; it's routine.
 
-1. **Catch up the whole chat first.** The brain should be written live, but things slip. Go back over the entire chat, from the first message, not just the end, and record whatever isn't in the brain yet, each in its folder (`brain` skill):
+1. **Catch up the last stretch first.** The brain is written live, but the last few messages often aren't in it yet. Go back from the end of the chat to the last time the brain was written, and record whatever from those messages isn't in it yet, each in its folder (`brain` skill). Not the whole chat: what was written live stays as it is.
    - `thoughts/`: questions and passing thoughts I had.
    - `ideas/`: things I said I could do, with their status; "later" ones get a plan with status later.
    - `plans/`: plans I OK'd that have no file yet, and steps done but not ticked.
