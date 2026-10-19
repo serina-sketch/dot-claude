@@ -49,7 +49,7 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 
 # Git: always master (added 2026-10-14)
 - `master` is the only branch: every commit goes there and gets pushed. *When* to commit is up to each project's `CLAUDE.md` (claude-assistant: right after every write; chatbot: at the end of a round; mimitabi: only when I ask).
-- Cloud sessions (phone, web) start on their own `claude/...` branch: after each commit, merge it into `master` and push `master`, without asking. No pull requests.
+- Cloud sessions (phone, web) start on their own session branch (`claude/...` or `ccr-...`): after each commit, push it straight to GitHub's `master` with `git push origin HEAD:master`, without asking. If the push is rejected, merge `origin/master` into the session branch and push again. No pull requests. Never check out or merge into the container's local `master`: it's a frozen copy from when the cloud environment was first set up, often hundreds of commits behind (changed 2026-10-19).
 - Never leave work only on another branch.
 - **Auto-sync (added 2026-10-15, narrowed the same day):** at session start a hook runs `git_sync.py`, which pulls the latest `master` into the current repo, every folder in the `.code-workspace` file at its root, and `~/.claude`. If it reports a conflict, stop and tell me before writing anything. If a push is rejected because `master` moved, pull and push again.
 

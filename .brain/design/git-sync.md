@@ -10,3 +10,8 @@
 
 ## Confirmed working
 - 2026-10-15: from claude-assistant it covers claude-assistant, `~/.claude`, mimitabi and the Q: hydownloader repo, and takes about 5 seconds at session start.
+
+## Cloud sessions skip the local master (decided 2026-10-19)
+- **Decided 2026-10-19:** in cloud sessions, Claude never uses the container's local `master` branch. After each commit it pushes the session branch straight to GitHub's `master` (`git push origin HEAD:master`); if the push is rejected, it merges `origin/master` into the session branch and pushes again. The rule is in the global `CLAUDE.md`, under "Git: always master". I chose only the rule, not a script that also resets the local `master`.
+- **Why:** the local `master` in a cloud container is a frozen copy. In claude-assistant's cloud environment it was created on 2026-10-14 at 22:36 UTC, when the environment was first set up, and it was 202 commits behind on 2026-10-19. Each new session only downloads GitHub's latest `master` into the session branch; nothing ever updates the local one.
+- **What the 2026-10-16 error really was (found 2026-10-19):** the "refusing to merge unrelated histories" error was not dot-claude history leaking into claude-assistant. The frozen local `master` is real claude-assistant history (its last commit, "Cloud: clone private dot-claude with a read-only token", is a claude-assistant commit). Cloud clones only download the last 50 commits, so git couldn't see that the old `master` and the new one connect, and called them unrelated. After downloading more history (`git fetch --deepen=200 origin master`), the old `master` showed up as a plain ancestor of GitHub's.
