@@ -13,7 +13,7 @@ Every project keeps a `.brain/` folder at its root, written live during chats, s
 
     python ~/.claude/skills/brain/brain_index.py
 
-Everything above the marker in `.brain/index.md` is hand-written: what the project is and what each folder is for.
+Everything above the marker in `.brain/index.md` is hand-written: what the project is and what each folder is for, and a `## Last stop` block (one or two lines: when, what the last chat was doing, the plan to pick up from), written and read by the `handoff` skill.
 
 ## Format the script reads
 

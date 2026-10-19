@@ -1,0 +1,28 @@
+---
+name: handoff
+description: "Save where a chat stopped into the project's brain so a new chat can pick it up, or pick up where the last chat stopped. Save: when I say 'put it in the brain', 'hand off', 'save where we are', or that I'll start a new chat. Resume: when I say 'read the brain and continue', 'pick up where we left off', 'where did we stop', or start a chat by asking to continue."
+---
+
+# Handoff
+
+Two halves: **save** at the end of a chat, **resume** at the start of the next. The point: a new chat continues exactly where the old one stopped, right before I said to save, without me re-explaining. Brain format: the `brain` skill.
+
+## Save
+
+Do all of it without asking; it's routine.
+
+1. **Every plan this chat touched** (`.brain/plans/`): rewrite its two lines so a chat with no memory of this one can act on them.
+   - `Where I stopped:` the date, what got done (files, commits, counts that matter), and what's still not done or not tried.
+   - `Next step:` the very next thing. **If the chat ended on a question I hadn't answered yet, write that question here word for word, with its options**, so it can be put back to me unchanged. Add any setup it needs (what to turn on, which command, which file).
+   - Tick the steps that are done; a plan made in this chat and not saved yet gets its file now.
+2. **Decisions not recorded yet:** anything I decided in this chat goes into `design/` (date and why); a decision I reversed gets the old line crossed out and `Replaced <date>`. Research results go to `knowledge/`. Only my words and decisions, never Claude's suggestions I didn't take.
+3. **The `## Last stop` block** in `.brain/index.md`, above the `<!-- auto ... -->` marker (create it there if missing): replace its text with one or two lines: the date, what the chat was doing, and the plan file to pick up from. Only one last stop: overwrite, don't append.
+4. **Commit** the way the project's `CLAUDE.md` says (chatbot: the `commit-merge` agent; a project that commits only when asked: say it's ready to commit instead).
+5. **Tell me** in a few lines: what's saved, the commit, and the one line a new chat will start from.
+
+## Resume
+
+1. Read `.brain/index.md`: its `## Last stop` block, and "Open right now" for the rest.
+2. Read the plan file the last stop names, and only that (plus any file it says to read first). Run `git log --oneline -5` to see if anything was committed after the save (another chat, another device).
+3. Say in two or three lines where we stopped. Then, if its `Next step` holds an open question, **ask it again exactly as it was, with its options**; otherwise start on the next step (if it changes files, the usual plan-first rule applies).
+4. Don't read the other brain files to get ready; anything deeper goes to the `brain-search` agent when it's needed.
