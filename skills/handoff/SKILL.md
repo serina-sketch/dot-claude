@@ -5,7 +5,7 @@ description: "Save where a chat stopped into the project's brain so a new chat c
 
 # Handoff
 
-Two halves: **save** at the end of a chat, **resume** at the start of the next. The point: a new chat continues exactly where the old one stopped, right before I said to save, without me re-explaining. Brain format: the `brain` skill.
+Two halves: **save** at the end of a chat, **resume** at the start of the next. The problem it solves: the brain is written live, but sometimes the last few messages aren't in it yet, so a handoff at that moment would lose them. Save records them, plus exactly where we stopped, so a new chat continues right where the old one did, without me re-explaining. Brain format: the `brain` skill.
 
 **When Claude calls it without being asked:** save when the chat is long enough that it may soon be summarized, when a big piece of work was just finished and committed, or when I say I'm stopping for now; say in one line that it saved. Resume when a new chat starts with only a greeting or "continue" and the brain has a Last stop.
 
