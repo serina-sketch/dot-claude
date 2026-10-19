@@ -8,7 +8,6 @@
       "PowerShell(git config user.name)"
     ]
   },
-  "model": "opus",
   "hooks": {
     "PostToolUse": [
       {
@@ -59,7 +58,7 @@
   "effortLevel": "xhigh",
   "modelSettings": {
     "claude-opus-5-5": {
-      "effortLevel": "low"
+      "effortLevel": "medium"
     },
     "claude-sonnet-5-5": {
       "effortLevel": "low"
