@@ -1,11 +1,13 @@
 ---
 name: handoff
-description: "Save where a chat stopped into the project's brain so a new chat can pick it up, or pick up where the last chat stopped. Save: when I say 'put it in the brain', 'hand off', 'save where we are', or that I'll start a new chat. Resume: when I say 'read the brain and continue', 'pick up where we left off', 'where did we stop', or start a chat by asking to continue."
+description: "Save where a chat stopped into the project's brain so a new chat can pick it up, or pick up where the last chat stopped. Save: when I say 'put it in the brain', 'hand off', 'save where we are', or that I'll start a new chat. Resume: when I say 'read the brain and continue', 'pick up where we left off', 'where did we stop', or start a chat by asking to continue. Claude also uses it on its own: save when a long chat is close to being summarized, when a big piece of work just finished and was committed, or when I say I'm stopping for now; resume when a chat opens with no request but the project's brain has a Last stop."
 ---
 
 # Handoff
 
 Two halves: **save** at the end of a chat, **resume** at the start of the next. The point: a new chat continues exactly where the old one stopped, right before I said to save, without me re-explaining. Brain format: the `brain` skill.
+
+**When Claude calls it without being asked:** save when the chat is long enough that it may soon be summarized, when a big piece of work was just finished and committed, or when I say I'm stopping for now; say in one line that it saved. Resume when a new chat starts with only a greeting or "continue" and the brain has a Last stop.
 
 ## Save
 
