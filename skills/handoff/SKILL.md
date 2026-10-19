@@ -11,11 +11,19 @@ Two halves: **save** at the end of a chat, **resume** at the start of the next. 
 
 Do all of it without asking; it's routine.
 
-1. **Every plan this chat touched** (`.brain/plans/`): rewrite its two lines so a chat with no memory of this one can act on them.
+1. **Catch up the whole chat first.** The brain should be written live, but things slip. Go back over the entire chat, from the first message, not just the end, and record whatever isn't in the brain yet, each in its folder (`brain` skill):
+   - `thoughts/`: questions and passing thoughts I had.
+   - `ideas/`: things I said I could do, with their status; "later" ones get a plan with status later.
+   - `plans/`: plans I OK'd that have no file yet, and steps done but not ticked.
+   - `design/`: every decision and detail I stated (date and why), what I confirmed working, known issues left open; reversals crossed out with `Replaced <date>`.
+   - `knowledge/`: research, measurements, setup notes, with the date and source.
+   - `tools/`: helper scripts made for the project.
+   
+   Check each one against what's already there before writing (read the file you'd edit; for anything else, ask `brain-search`), so nothing is written twice. Only my words and decisions, never Claude's suggestions I didn't take; no debugging back-and-forth, only final behavior.
+2. **Every plan this chat touched** (`.brain/plans/`): rewrite its two lines so a chat with no memory of this one can act on them.
    - `Where I stopped:` the date, what got done (files, commits, counts that matter), and what's still not done or not tried.
    - `Next step:` the very next thing. **If the chat ended on a question I hadn't answered yet, write that question here word for word, with its options**, so it can be put back to me unchanged. Add any setup it needs (what to turn on, which command, which file).
    - Tick the steps that are done; a plan made in this chat and not saved yet gets its file now.
-2. **Decisions not recorded yet:** anything I decided in this chat goes into `design/` (date and why); a decision I reversed gets the old line crossed out and `Replaced <date>`. Research results go to `knowledge/`. Only my words and decisions, never Claude's suggestions I didn't take.
 3. **The `## Last stop` block** in `.brain/index.md`, above the `<!-- auto ... -->` marker (create it there if missing): replace its text with one or two lines: the date, what the chat was doing, and the plan file to pick up from. Only one last stop: overwrite, don't append.
 4. **Commit** the way the project's `CLAUDE.md` says (chatbot: the `commit-merge` agent; a project that commits only when asked: say it's ready to commit instead).
 5. **Tell me** in a few lines: what's saved, the commit, and the one line a new chat will start from.
