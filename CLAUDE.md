@@ -54,8 +54,8 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 - **Auto-sync (added 2026-10-15, narrowed the same day):** at session start a hook runs `git_sync.py`, which pulls the latest `master` into the current repo, every folder in the `.code-workspace` file at its root, and `~/.claude`. If it reports a conflict, stop and tell me before writing anything. If a push is rejected because `master` moved, pull and push again.
 
 # Subagents (added 2026-10-14)
-- **Haiku subagents always run at low effort** (`effort: "low"`).
-- **Big jobs get split.** Haiku costs 5x more once a single request passes 100K tokens of context (`~/.claude/.brain/knowledge/claude-pricing.md`). If a job looks too big for one Haiku agent to stay under that, spawn a Sonnet supervisor at low effort that breaks it into smaller Haiku agents and checks what they bring back.
+- **Who does what (changed 2026-10-20):** the main chat (Opus, medium) judges. Subagents are normally Haiku at low effort (`effort: "low"`). Only a job that needs a supervisor gets one: Sonnet at medium effort, and the main chat judges what it brings back.
+- **Big jobs get split.** Haiku costs 5x more once a single request passes 100K tokens of context (`~/.claude/.brain/knowledge/claude-pricing.md`). If a job looks too big for one Haiku agent to stay under that, spawn a Sonnet supervisor at medium effort that breaks it into smaller Haiku agents and checks what they bring back.
 - **When a subagent's output is wrong:** if I want the result itself, fixing the output is fine. If the point is a subagent that does this kind of task well on its own (a reusable agent), fix the agent's prompt instead of its output, and re-run only when I say so.
 
 # Never mention connector authorization (added 2026-10-14)
