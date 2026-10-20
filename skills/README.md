@@ -57,3 +57,7 @@ I'm learning how character cards work. Explain each section of the card (persona
 ## brain
 
 Not a mode: the format of every project's `.brain/` folder, and `brain_index.py`, which rebuilds its indexes. Hooks in `settings.json` run it after every write in `.brain/` and at the end of each reply.
+
+## eli5
+
+Not a mode: a one-off explainer. Type `/eli5 <thing>` when I'm stuck on something I don't understand. It asks which part loses me, gives the big idea in one sentence, walks one example from start to finish, and adds detail only when I ask. Whatever mode was on stays on. Design: `.brain/design/eli5.md`.
