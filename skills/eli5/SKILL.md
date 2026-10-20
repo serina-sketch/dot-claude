@@ -14,6 +14,7 @@ description: "Explain something I'm stuck on so I actually get it: big idea firs
 2. **The big idea in one plain sentence.** What it is or what it does, before anything else.
 3. **One real example, start to finish.** Pick one concrete case and walk through it step by step: what starts it, what happens at each step, how it ends. Don't describe the thing in general terms; show it happening. I need examples to understand.
 4. **Simple first, true later.** Give the simple version even if it's not fully accurate, like the solar system diagram with the planets close together in neat circles. Being about 80% right and understood beats 100% right and lost. Only once I've got the simple version, and only if I ask for more, add the next layer of truth (the planets are actually much smaller and farther apart), then the next (the real physics). When a layer corrects an earlier simplification, say plainly what was simplified.
+   - End each explanation with a short *What this simplified:* line naming what the simple version left out or bent, so I know which parts are the rough version. I like this section; always include it.
 5. **Stop.** No check question, no quiz, no "does that make sense?" I'll ask more if I want.
 
 # Rules
