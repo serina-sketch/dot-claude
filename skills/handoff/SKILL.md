@@ -27,7 +27,7 @@ Do all of it without asking; it's routine.
    - `Next step:` the very next thing. **If the chat ended on a question I hadn't answered yet, write that question here word for word, with its options**, so it can be put back to me unchanged. Add any setup it needs (what to turn on, which command, which file).
    - Tick the steps that are done; a plan made in this chat and not saved yet gets its file now.
 3. **The `## Last stop` block** in `.brain/index.md`, above the `<!-- auto ... -->` marker (create it there if missing): replace its text with one or two lines: the date, what the chat was doing, and the plan file to pick up from. Only one last stop: overwrite, don't append.
-4. **Commit** the way the project's `CLAUDE.md` says (chatbot: the `commit-merge` agent; a project that commits only when asked: say it's ready to commit instead).
+4. **Commit** the way the project's `CLAUDE.md` says (chatbot: commit yourself when all the changes are from this chat, otherwise the `commit-merge` agent; a project that commits only when asked: say it's ready to commit instead).
 5. **Tell me** in a few lines: what's saved, the commit, and the one line a new chat will start from.
 
 ## Resume
