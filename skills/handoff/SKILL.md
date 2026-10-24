@@ -7,7 +7,16 @@ description: "Save where a chat stopped so a new chat can pick it up, or pick up
 
 Two halves: **save** right before I start a new chat, **resume** at the start of the next one. The brain is already written live during the chat, so every step is already in it. Handoff only has to write where we stopped. It must not re-read the chat or sweep the brain, to save tokens.
 
-Save only when I ask. Resume also when a chat opens with no other request and `.brain/handoff/handoff.md` exists.
+Save when I ask, or when you suggested it and I said yes. Resume also when a chat opens with no other request and `.brain/handoff/handoff.md` exists.
+
+## Suggest
+
+Suggest a handoff in one line ("This chat is getting long, want me to hand off?") when one of these happens:
+- the chat got summarized (older messages squeezed into a summary)
+- you lose track of something from this chat: re-reading a file you already read, or looking up a decision I made earlier in it
+- I switch to a different thread (another plan or topic)
+
+Save only if I say yes. If I say no, keep going and don't suggest again until the next sign.
 
 ## Save
 
