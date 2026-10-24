@@ -13,15 +13,15 @@ Save only when I ask. Resume also when a chat opens with no other request and `.
 
 Do all of it without asking; it's routine.
 
-1. **Write only `.brain/handoff/handoff.md`** (create the folder if missing; overwrite the file, there is one handoff only). Nothing else in the brain. Don't re-read the chat, don't check brain folders, no subagents. It holds:
+1. **Update the current thread's plan file first:** its `Where I stopped:` and `Next step:` lines, and **if the chat ended on a question I hadn't answered, that question word for word, with its options**. Only that one plan; if the chat had no plan, skip this. Every thread keeps its place in its own plan file, so the handoff never holds anything that lives nowhere else.
+2. **Then write `.brain/handoff/handoff.md`** (create the folder if missing; overwrite the file, there is one handoff only: the latest chat). Nothing else in the brain. Don't re-read the chat, don't check brain folders, no subagents. It holds:
    - the date and time
    - what the chat was doing
    - where it stopped: what got done (files, commits, counts that matter) and what's not done
-   - the next step, and which plan file to open
-   - **if the chat ended on a question I hadn't answered, that question word for word, with its options**
+   - the next step, and which plan file to open (the open question is in that plan)
    - any setup the next step needs (what to turn on, which command, which file)
-2. **Commit and push in one command**, the way the project's `CLAUDE.md` says. A project that commits only when asked: say it's ready to commit instead.
-3. **Reply in one line:** the commit, and the line the new chat starts from.
+3. **Commit and push in one command**, the way the project's `CLAUDE.md` says. A project that commits only when asked: say it's ready to commit instead.
+4. **Reply in one line:** the commit, and the line the new chat starts from.
 
 ## Resume
 
