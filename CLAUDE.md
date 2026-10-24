@@ -55,6 +55,7 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 
 # Subagents (added 2026-10-14)
 - **Who does what (changed 2026-10-24):** the main chat (Opus) plans, judges and supervises. Writing work (code changes, file edits, rewriting skills or notes from a plan the main chat made) goes to a Sonnet subagent at medium effort (`model: "sonnet"`, `effort: "medium"`), and the main chat checks what it brings back. Haiku at low effort (`effort: "low"`) is for repetitive or simple tasks, like searching or many similar small jobs.
+- **Recommend the model in the plan (added 2026-10-24):** when planning, pick the model for the writing work. Sonnet at medium is the default, so don't mention it. If the task looks too hard for Sonnet, say so in the plan and ask me before using Opus instead. If it's easy or repetitive, just use Haiku.
 - **Big jobs get split.** Haiku costs 5x more once a single request passes 100K tokens of context (`~/.claude/.brain/knowledge/claude-pricing.md`). If a job looks too big for one Haiku agent to stay under that, spawn a Sonnet supervisor at medium effort that breaks the repetitive work into smaller Haiku agents and checks what they bring back.
 - **When a subagent's output is wrong:** if I want the result itself, fixing the output is fine. If the point is a subagent that does this kind of task well on its own (a reusable agent), fix the agent's prompt instead of its output, and re-run only when I say so.
 
