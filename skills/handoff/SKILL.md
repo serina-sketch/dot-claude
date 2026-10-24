@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: "Save where a chat stopped so a new chat can pick it up, or pick up where the last chat stopped. Save: when I say 'hand off', 'put it in the brain', 'save where we are', or that I'll start a new chat. Resume: when I say 'read the brain and continue', 'pick up where we left off', 'where did we stop', or when a chat opens with no other request and `.brain/handoff/handoff.md` exists."
+description: "Save where a chat stopped so a new chat can pick it up, or pick up where the last chat stopped. Save: when I say 'hand off', 'put it in the brain', 'save where we are', or that I'll start a new chat. Suggest (one line, save only if I say yes): when the chat got summarized, when you lose track of something from this chat, or when I switch to a different thread. Resume: when I say 'read the brain and continue', 'pick up where we left off', 'where did we stop', or when a chat opens with no other request and `.brain/handoff/handoff.md` exists."
 ---
 
 # Handoff
