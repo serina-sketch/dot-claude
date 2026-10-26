@@ -19,3 +19,7 @@
 # Skills for Claude in the browser (zips are rebuilt from the folders).
 !/browser-skills/
 /browser-skills/*.zip
+
+# Alarm skill: the private ntfy topic stays on this PC (this repo is public).
+/skills/alarm/config.json
+/skills/alarm/__pycache__/

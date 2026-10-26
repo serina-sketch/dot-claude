@@ -17,7 +17,7 @@ The work that built most of this happened in claude-assistant (its plans, ideas 
 ## Open right now
 
 **Plans with steps left:**
-- none
+- [A phone app for reminders and alarms that actually ring](plans/phone-reminders-app.md): next: in the claude.ai cloud environment settings, add `ALARM_TOPIC` (the topic from `~/.claude/skills/alarm/config.json` on the PC) and `ntfy.sh` to the network allow list, then test an alarm from a cloud session.
 
 **Ideas not decided yet:**
 - **Fix the stale local master in cloud sessions** ([cloud-git.md](ideas/cloud-git.md))
