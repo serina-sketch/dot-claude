@@ -19,5 +19,8 @@
 - **Cloud syncs every repo side by side (decided and built 2026-10-19):** in cloud sessions, `git_sync.py` also covers every repo of mine in the same parent folder (`/home/user/<repo>`), where attached repos are cloned. Why: a chat can open in that parent folder instead of inside a repo, and then only `~/.claude` got synced. The PC keeps the workspace-file rule.
 - **The cloud git rule moved (2026-10-19):** it now lives under "Cloud sessions" in the global `CLAUDE.md`, with a pointer left under "Git: always master". Why: it only applies to cloud, and that section already exists for cloud rules.
 
+- **The cloud's own edits to `~/.claude` never block the sync (decided and built 2026-10-26):** in cloud sessions only, for `~/.claude` only, `git_sync.py` sets the copy's local edits aside before pulling GitHub's `master`, then puts them back. If they clash, GitHub's version is kept and the sync line says so, instead of stopping. Why: on 2026-10-26 a cloud chat started blocked. The cloud had changed `"model": "opus"` to `"opus[1m]"` in that copy's `settings.json`, and my PC commits had changed the same line to `"sonnet"`, so the merge was aborted. I never edit that copy, so nothing in it is mine to lose. Local commits there would still stop the sync as before.
+
 ## Confirmed working (cloud)
 - 2026-10-19: run from `/home/user`, the script reset claude-assistant's local `master` from the 2026-10-14 copy to GitHub's latest, and covered claude-assistant, dot-claude and `~/.claude`. Run without the cloud flag, it behaved as before.
+- 2026-10-26: tested on a throwaway copy of `~/.claude` set back 14 commits. With the same `"model"` clash it pulled the 14 commits and kept GitHub's `"sonnet"`; with a cloud edit that didn't clash, it pulled and kept the edit.

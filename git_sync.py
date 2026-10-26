@@ -9,7 +9,10 @@ Which repos: the repo of the current folder, the folders listed in its
 every repo of mine next to the current one (where attached repos are cloned).
 
 Cloud sessions also reset the local master to GitHub's: the container keeps
-a frozen copy of master from when the environment was first set up.
+a frozen copy of master from when the environment was first set up. For
+~/.claude on cloud, the cloud's own local edits (it rewrites settings.json)
+are set aside before the pull and put back after; if they clash, GitHub's
+version is kept and the run says so instead of stopping.
 
 How to run (the SessionStart hook calls it; reads hook JSON on stdin):
   python git_sync.py
@@ -21,6 +24,7 @@ import sys
 
 OWNER = "serina-sketch"
 CLOUD = os.environ.get("CLAUDE_CODE_REMOTE") == "true"
+HOME_CLAUDE = os.path.normpath(os.path.join(os.path.expanduser("~"), ".claude"))
 
 
 def git(repo, *args):
@@ -98,6 +102,29 @@ def fix_stale_base(repo, base):
     return f"reset stale local {base} to GitHub's" if code == 0 else None
 
 
+def sync_cloud_claude(repo, name, base, behind, reset):
+    """Cloud ~/.claude: nobody edits this copy by hand, but the cloud itself
+    rewrites settings.json (e.g. the "model" line). Set those edits aside,
+    pull GitHub's version, then put them back if they fit; if they don't,
+    GitHub's version wins."""
+    stashed = bool(git(repo, "status", "--porcelain", "-uno")[1])
+    if stashed and git(repo, "stash", "push", "-q", "-m", "git_sync: cloud edits")[0] != 0:
+        return f"{name}: couldn't set aside the cloud's local edits; nothing changed. Resolve before writing."
+    code, _ = git(repo, "merge", "--no-edit", f"origin/{base}")
+    if code != 0:
+        git(repo, "merge", "--abort")
+        if stashed:
+            git(repo, "stash", "pop", "-q")
+        return (f"{name}: {base} has {behind} new commit(s) that conflict with "
+                f"local commits; merge aborted, nothing changed. Resolve before writing.")
+    msg = f"{name}: pulled {behind} new commit(s) from {base}" + (f", {reset}" if reset else "")
+    if stashed and git(repo, "stash", "pop", "-q")[0] != 0:
+        git(repo, "reset", "-q", "--hard", "HEAD")
+        git(repo, "stash", "drop", "-q")
+        msg += "; the cloud's local edits clashed, so GitHub's version was kept"
+    return msg
+
+
 def sync(repo):
     """Return a message, or None when there was nothing to do."""
     name = os.path.basename(repo)
@@ -111,6 +138,8 @@ def sync(repo):
     code, behind = git(repo, "rev-list", "--count", f"HEAD..origin/{base}")
     if code != 0 or behind == "0":
         return f"{name}: {reset}" if reset else None
+    if CLOUD and repo == HOME_CLAUDE:
+        return sync_cloud_claude(repo, name, base, behind, reset)
     code, out = git(repo, "merge", "--no-edit", f"origin/{base}")
     if code == 0:
         return f"{name}: pulled {behind} new commit(s) from {base}" + (f", {reset}" if reset else "")
