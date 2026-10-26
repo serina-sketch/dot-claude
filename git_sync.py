@@ -5,14 +5,11 @@ branch (master or main) into the current branch. A merge that would conflict
 is aborted, never forced, and reported.
 
 Which repos: the repo of the current folder, the folders listed in its
-*.code-workspace file, and ~/.claude (dot-claude). In cloud sessions, also
-every repo of mine next to the current one (where attached repos are cloned).
+*.code-workspace file, and ~/.claude (dot-claude).
 
-Cloud sessions also reset the local master to GitHub's: the container keeps
-a frozen copy of master from when the environment was first set up. For
-~/.claude on cloud, the cloud's own local edits (it rewrites settings.json)
-are set aside before the pull and put back after; if they clash, GitHub's
-version is kept and the run says so instead of stopping.
+On cloud, ~/.claude is cloned by the environment's setup script and reused
+for days, so here it is simply reset to GitHub's master: nothing in that
+copy is mine to keep (the cloud rewrites settings.json on its own).
 
 How to run (the SessionStart hook calls it; reads hook JSON on stdin):
   python git_sync.py
@@ -61,17 +58,6 @@ def find_repos(cwd):
                         repos.append(repo_root(p))
     except (OSError, ValueError):
         pass
-    # Cloud: repos sit side by side (/home/user/<repo>), and the chat may
-    # open in that parent folder rather than inside a repo.
-    if CLOUD:
-        parent = os.path.dirname(here) if here else os.path.abspath(cwd)
-        try:
-            for name in sorted(os.listdir(parent)):
-                p = os.path.join(parent, name)
-                if os.path.isdir(os.path.join(p, ".git")):
-                    repos.append(os.path.normpath(p))
-        except OSError:
-            pass
     home_claude = os.path.join(os.path.expanduser("~"), ".claude")
     if os.path.isdir(os.path.join(home_claude, ".git")):
         repos.append(os.path.normpath(home_claude))
@@ -90,41 +76,6 @@ def default_branch(repo):
     return None
 
 
-def fix_stale_base(repo, base):
-    """Cloud: point the local base branch at GitHub's when it isn't checked out."""
-    if git(repo, "rev-parse", "--verify", "-q", base)[0] != 0:
-        return None
-    if git(repo, "symbolic-ref", "-q", "--short", "HEAD")[1] == base:
-        return None
-    if git(repo, "rev-parse", base)[1] == git(repo, "rev-parse", f"origin/{base}")[1]:
-        return None
-    code, _ = git(repo, "branch", "-f", base, f"origin/{base}")
-    return f"reset stale local {base} to GitHub's" if code == 0 else None
-
-
-def sync_cloud_claude(repo, name, base, behind, reset):
-    """Cloud ~/.claude: nobody edits this copy by hand, but the cloud itself
-    rewrites settings.json (e.g. the "model" line). Set those edits aside,
-    pull GitHub's version, then put them back if they fit; if they don't,
-    GitHub's version wins."""
-    stashed = bool(git(repo, "status", "--porcelain", "-uno")[1])
-    if stashed and git(repo, "stash", "push", "-q", "-m", "git_sync: cloud edits")[0] != 0:
-        return f"{name}: couldn't set aside the cloud's local edits; nothing changed. Resolve before writing."
-    code, _ = git(repo, "merge", "--no-edit", f"origin/{base}")
-    if code != 0:
-        git(repo, "merge", "--abort")
-        if stashed:
-            git(repo, "stash", "pop", "-q")
-        return (f"{name}: {base} has {behind} new commit(s) that conflict with "
-                f"local commits; merge aborted, nothing changed. Resolve before writing.")
-    msg = f"{name}: pulled {behind} new commit(s) from {base}" + (f", {reset}" if reset else "")
-    if stashed and git(repo, "stash", "pop", "-q")[0] != 0:
-        git(repo, "reset", "-q", "--hard", "HEAD")
-        git(repo, "stash", "drop", "-q")
-        msg += "; the cloud's local edits clashed, so GitHub's version was kept"
-    return msg
-
-
 def sync(repo):
     """Return a message, or None when there was nothing to do."""
     name = os.path.basename(repo)
@@ -134,15 +85,16 @@ def sync(repo):
     base = default_branch(repo)
     if not base:
         return None
-    reset = fix_stale_base(repo, base) if CLOUD else None
     code, behind = git(repo, "rev-list", "--count", f"HEAD..origin/{base}")
     if code != 0 or behind == "0":
-        return f"{name}: {reset}" if reset else None
+        return None
     if CLOUD and repo == HOME_CLAUDE:
-        return sync_cloud_claude(repo, name, base, behind, reset)
+        code, _ = git(repo, "reset", "-q", "--hard", f"origin/{base}")
+        return f"{name}: reset to GitHub's {base} ({behind} new commit(s))" if code == 0 \
+            else f"{name}: reset to GitHub's {base} failed"
     code, out = git(repo, "merge", "--no-edit", f"origin/{base}")
     if code == 0:
-        return f"{name}: pulled {behind} new commit(s) from {base}" + (f", {reset}" if reset else "")
+        return f"{name}: pulled {behind} new commit(s) from {base}"
     git(repo, "merge", "--abort")
     return (f"{name}: {base} has {behind} new commit(s) that conflict with "
             f"local changes; merge aborted, nothing changed. Resolve before writing.")
