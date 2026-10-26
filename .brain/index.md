@@ -3,7 +3,7 @@
 *The map of the `dot-claude` brain. Each folder has its own `index.md` listing its files.*
 
 ## This project
-`dot-claude` is my global Claude Code setup (`~/.claude`): the global rules in `CLAUDE.md`, the modes and the brain skill in `skills/`, the `brain-search` agent, and the settings and hooks. It syncs through GitHub to every PC, and the cloud environment's setup script clones it into every cloud session. This brain holds the facts and decisions behind the global setup, so any project, on any machine, can find them at `~/.claude/.brain/`.
+`dot-claude` is my global Claude Code setup (`~/.claude`): the global rules in `CLAUDE.md`, the modes and the brain skill in `skills/`, the `brain-search` agent, and the settings and hooks. It syncs through GitHub to every PC, and each repo's start hook (`.claude/cloud.sh sync`) puts it into every cloud session. This brain holds the facts and decisions behind the global setup, so any project, on any machine, can find them at `~/.claude/.brain/`.
 
 ## Folders
 - `design/`: decisions about the global setup: the brain, plans, and how `dot-claude` syncs.
