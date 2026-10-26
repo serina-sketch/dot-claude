@@ -23,3 +23,4 @@
 # Alarm skill: the private ntfy topic stays on this PC (this repo is public).
 /skills/alarm/config.json
 /skills/alarm/__pycache__/
+skills/session-start-hook/
