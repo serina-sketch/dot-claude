@@ -8,7 +8,7 @@
       "PowerShell(git config user.name)"
     ]
   },
-  "model": "sonnet",
+  "model": "opus",
   "hooks": {
     "PostToolUse": [
       {
@@ -62,7 +62,7 @@
       "effortLevel": "medium"
     },
     "claude-sonnet-5-5": {
-      "effortLevel": "low"
+      "effortLevel": "medium"
     },
     "claude-haiku-5-5": {
       "effortLevel": "medium"
