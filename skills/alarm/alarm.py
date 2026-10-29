@@ -8,8 +8,10 @@
     python ~/.claude/skills/alarm/alarm.py cancel <id>                   # remove a waiting alarm from the phone
 
 Settings are read from config.json next to this script (server, topic, timezone).
-config.json is not in git (dot-claude is public). The ALARM_TOPIC environment
-variable, if set, overrides the topic (that is how cloud sessions get it).
+config.json is not in git (dot-claude is public). If it is missing, the copy in
+the private claude-assistant repo (secrets/alarm-config.json) is used. The
+ALARM_TOPIC environment variable, if set, overrides the topic (that is how
+cloud sessions get it).
 Standard library only; runs on Windows and on the Linux cloud container (cloud
 needs ntfy.sh on its network allow list).
 
@@ -42,12 +44,19 @@ except Exception:
     pass
 
 HERE = pathlib.Path(__file__).resolve().parent
+BACKUP_CONFIGS = [
+    pathlib.Path.home() / "home/serina-sketch/claude-assistant/secrets/alarm-config.json",
+    pathlib.Path.home() / "claude-assistant/secrets/alarm-config.json",
+    pathlib.Path("/home/user/claude-assistant/secrets/alarm-config.json"),
+]
 UNITS = {"s": 1, "m": 60, "h": 3600, "d": 86400}
 
 
 def load_config():
     cfg = {"server": "https://ntfy.sh", "timezone": "America/Toronto"}
     path = HERE / "config.json"
+    if not path.exists():
+        path = next((p for p in BACKUP_CONFIGS if p.exists()), path)
     if path.exists():
         cfg.update(json.loads(path.read_text(encoding="utf-8")))
     if os.environ.get("ALARM_TOPIC"):

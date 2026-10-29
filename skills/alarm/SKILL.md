@@ -19,7 +19,7 @@ Claude sets alarms on Rain's Razr through ntfy. The Claude Alarm app on the phon
 After setting one, tell Rain the ring time and the alarm's id.
 
 ## Good to know
-- The topic is private and `dot-claude` is public, so it is never committed: on the PC it's in `config.json` next to the script (ignored by git); on cloud it comes from the `ALARM_TOPIC` environment variable. If the script says there's no topic, tell Rain which one is missing.
+- The topic is private and `dot-claude` is public, so it is never committed: on the PC it's in `config.json` next to the script (ignored by git); if that is missing, the script uses the copy in the private `claude-assistant` repo, `secrets/alarm-config.json`; on cloud it comes from the `ALARM_TOPIC` environment variable. If the script says there's no topic, tell Rain which one is missing.
 - `config.json` looks like this (use the real topic, never commit it): `{"server": "https://ntfy.sh", "topic": "<your-private-topic>", "timezone": "America/Toronto"}`. `server` and `timezone` are optional and default to these values, so on cloud `ALARM_TOPIC` alone is enough.
 - A cloud session also needs `ntfy.sh` on its network allow list, or sending fails.
 - `list` only sees alarms set in the last 12 hours, because ntfy.sh keeps messages that long. The app's own screen shows every waiting alarm.
