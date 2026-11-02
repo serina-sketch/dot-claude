@@ -16,7 +16,7 @@ Claude sets alarms on Rain's Razr through ntfy. The Claude Alarm app on the phon
 - See alarms still waiting, with their ids: `python ~/.claude/skills/alarm/alarm.py list`
 - Remove a waiting alarm: `python ~/.claude/skills/alarm/alarm.py cancel <id>` (the id is printed when the alarm is set, and by `list`).
 
-After setting one, tell Rain the ring time and the alarm's id. If the alarm has a task in the Todoist "Reminders" project, put the id in that task's description every time (and update it when an alarm is moved).
+After setting one, tell Rain the ring time and the alarm's id. If the alarm has a task in the Todoist "Dates" project (Alarms section), put the id in that task's description every time (and update it when an alarm is moved).
 
 ## Good to know
 - The topic is private and `dot-claude` is public, so it is never committed: on the PC it's in `config.json` next to the script (ignored by git); if that is missing, the script uses the copy in the private `claude-assistant` repo, `secrets/alarm-config.json`; on cloud it comes from the `ALARM_TOPIC` environment variable. If the script says there's no topic, tell Rain which one is missing.
