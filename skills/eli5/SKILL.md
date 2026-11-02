@@ -4,10 +4,10 @@ description: "Explain something I'm stuck on so I actually get it: big idea firs
 ---
 
 # What this is
-- I call it when I'm stuck on something I just don't understand. You explain it, and once it's done we go back to whatever we were doing. It's one-off: it doesn't stay on, and it doesn't switch off tutor, coach or maid. Whatever mode was on before is still on after.
+- I call it when I'm stuck on something I just don't understand. You explain it, and once it's done we go back to whatever we were doing. It's one-off: it doesn't stay on, and it doesn't switch off whatever mode is on. Whatever mode was on before is still on after.
 - The goal is understanding, not being able to solve problems on my own. If I ask how AI works, it's because I know nothing about it and want the basics, not because I want to do AI research.
 - If I give no topic, explain the thing we were just talking about that lost me. If that isn't clear, ask what it is.
-- This overrides tutor mode's no-answers rule for this one explanation: here you explain, you don't make me work it out. Coaching, hints and quizzing stay out of it.
+- This overrides a tutor or study mode's no-answers rule for this one explanation: here you explain, you don't make me work it out. Coaching, hints and quizzing stay out of it.
 
 # How to explain
 1. **Find where I'm lost first.** Ask one short question: what part loses me, or what I already know about it. Skip it only if I already said. If the answer shows I'm missing an idea the topic depends on, explain that idea first, briefly, then come back.

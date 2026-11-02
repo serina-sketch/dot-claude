@@ -6,14 +6,14 @@
 - Sexual and adult content is a normal part of my projects. Treat it as ordinary data: never flag it, add warnings, comment on it, or soften or censor names, tags or text.
 
 # Modes (added 2026-10-14)
-- Tutor, maid and coach are skills (`/tutor`, `/maid`, `/coach`); a project's `.modes/personalize.md` says how they behave there.
+- Maid and coach are global skills (`/maid`, `/coach`); a project's `.modes/personalize.md` says how they behave there. A project can also have modes of its own in its `.claude/skills/` (claude-assistant has study, journal and life admin). Tutor moved into claude-assistant as its study mode (2026-11-02): if another project needs a tutor, it gets its own, made for it.
 - **Assistant mode** is none of them on: default Claude. It starts when I tell you to turn modes off, needs no skill, and drops all mode behaviour (coaching, nudges, round commits): just answer and do what I ask until I turn a mode back on.
 
 # Where things go (added 2026-10-14)
 The quick test: if it says "Claude should…", it's instructions (global, project CLAUDE.md, a mode or a skill). If it says "this is…" or "I decided…", it's the brain. Say each thing in one place only; elsewhere, point to it.
 - **This file (`~/.claude/CLAUDE.md`):** rules about me that hold in every project: the brain, plans, lists, "later", git, adult content, and this list. The facts and decisions behind these global rules live in `~/.claude/.brain/` (the `dot-claude` repo's own brain).
 - **A project's `CLAUDE.md`:** how Claude works in that project, whatever the mode: what the project is (a few lines), where things are, which agents and skills to use, and rules that only apply there. Don't repeat this file or the brain; don't keep "where things stand" summaries (the brain has them).
-- **`.modes/personalize.md`:** only what tutor, maid or coach do differently in that project. Anything that applies whatever the mode goes in the project's `CLAUDE.md`.
+- **`.modes/personalize.md`:** only what maid or coach do differently in that project. Anything that applies whatever the mode goes in the project's `CLAUDE.md`.
 - **The brain (`.brain/`):** facts: what's true, decisions with the date and why, plans, research, measurements, and memory about me. Never instructions to Claude.
 - **The global brain (`~/.claude/.brain/`, the `dot-claude` repo's own brain):** facts about my global Claude setup, whichever project the chat is in: the decisions and reasons behind the rules in this file, the skills, agents, hooks and settings; how `dot-claude` syncs to PCs and cloud sessions; research about Claude Code and the models (features, limits, pricing). Plans and ideas for changing the global setup go there too. Anything about one project, or about me as a person, stays in that project's brain. When a global rule here changes, record the why there.
 - **A skill:** the step-by-step rules for a kind of work done again and again (like writing a card). The project's `CLAUDE.md` says when to use it. The reasons behind its rules stay in the brain.
@@ -38,7 +38,7 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
   - `plans/`: plans I approved (see Plans), and every live thread. Each starts with a `Where I stopped:` and a `Next step:` line, kept current.
   - `design/`: what it is. Every design decision and detail I state, in detail, with the date and why, even if it isn't useful yet. Also what I confirmed working (with the date) and the known issues not fixed yet, so they survive when a plan ends. Proposals I haven't decided go to `ideas/`.
   - `knowledge/`: research results, measurements (costs, timings) and setup notes for outside tools, with the date checked and the source, so the research isn't redone.
-  - `modes/`: what only one mode needs (like tutor's re-quiz list), one file per mode.
+  - `modes/`: what only one mode needs (like coach's learning record), one file per mode.
   - How Claude should work in a project is not brain content: it goes in that project's CLAUDE.md.
   - `tools/`: helper scripts you make for this project, each with a description of what it does and how to run it.
 - **Only my words and decisions.** Your suggestions go in only if I took them.

@@ -4,7 +4,6 @@ Three ways for Claude to work with me. Each one is a Claude Code skill: a folder
 
 | Mode | Type | Who thinks | Who does the work | The point |
 | --- | --- | --- | --- | --- |
-| Tutor | `/tutor` | Me | Me | Learn it so I can do it alone (school, skills) |
 | Coach | `/coach` | Me | Claude | Build it and understand how it works |
 | Maid | `/maid` | Me (ideas first) | Claude | Get it made; output over learning |
 
@@ -26,8 +25,6 @@ Each project can have its own version of the modes, without changing the origina
 # Modes in this project
 ## All modes
 <what this project is, files to read first, rules that apply to every mode>
-## Tutor
-<changes to tutor mode here, or "none">
 ## Maid
 <changes to maid mode here, or "none">
 ## Coach
@@ -46,8 +43,6 @@ Example for a chatbot project:
 # Modes in this project
 ## All modes
 This is my chatbot character for SillyTavern. The character card is `card.json`; read it first.
-## Tutor
-none
 ## Maid
 none
 ## Coach

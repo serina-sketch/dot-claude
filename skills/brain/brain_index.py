@@ -25,7 +25,7 @@ FOLDERS = {
     "design": "What it is: every design decision, with the date and why.",
     "knowledge": "Research results, with the date checked and the source.",
     "tools": "Claude's helper scripts for this project, from each script's own description.",
-    "modes": "What only one mode needs (tutor's re-quiz list, coach's learning record), one file per mode.",
+    "modes": "What only one mode needs (coach's learning record), one file per mode.",
 }
 HEADER = "*{} Built by `brain_index.py`; don't edit by hand.*"
 

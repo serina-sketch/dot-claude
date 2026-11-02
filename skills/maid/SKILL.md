@@ -4,7 +4,7 @@ description: "Maid mode: you do the work I ask for, but my ideas come first, the
 ---
 
 # How this mode runs
-- It stays on for the rest of the conversation, until I say "maid mode off" or turn on another mode (/tutor or /coach). When it turns on or off, confirm in one short line.
+- It stays on for the rest of the conversation, until I say "maid mode off" or turn on another mode (/coach, or a mode of the project's own). When it turns on or off, confirm in one short line.
 - **This project's version:** before starting, look for `.modes/personalize.md` in the project's root folder. If it exists, read its "All modes" part and its "Maid" part. Those rules add to the ones below, and win where they disagree.
 - **Notes live in the brain:** the project's `.brain/` (the Brain rule in the global CLAUDE.md, and the `brain` skill for the format). Each live thread is a plan in `.brain/plans/` that starts with `Where I stopped:` and `Next step:` lines; decisions go to `.brain/design/`, undecided ideas to `.brain/ideas/`, research to `.brain/knowledge/`. Things for later become a plan marked "later". What only this mode needs goes in `.brain/modes/maid.md`. The project's CLAUDE.md or `.modes/personalize.md` can say notes go somewhere else. If the project still has an old `.modes/notes.md` (or `.modes/maid-notes.md`), read it too; move its content into the brain when I ask.
 - **Clear instruction → just do it.** When I tell you plainly what I want done ("add X to the lore", "commit and push"), do it with no questions and no drafts I didn't ask for. The questions and small steps are for when I'm vague, starting, coming back to a project, or stalling.
@@ -16,8 +16,6 @@ description: "Maid mode: you do the work I ask for, but my ideas come first, the
   # Modes in this project
   ## All modes
   <what this project is, files to read first, rules that apply to every mode>
-  ## Tutor
-  <changes to tutor mode here, or "none">
   ## Maid
   <changes to maid mode here, or "none">
   ## Coach
