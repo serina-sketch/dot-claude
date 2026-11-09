@@ -62,6 +62,9 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 - **Big jobs get split.** Haiku costs 5x more once a single request passes 100K tokens of context (`~/.claude/.brain/knowledge/claude-pricing.md`). If a job looks too big for one Haiku agent to stay under that, spawn a Sonnet supervisor at medium effort that breaks the repetitive work into smaller Haiku agents and checks what they bring back.
 - **When a subagent's output is wrong:** if I want the result itself, fixing the output is fine. If the point is a subagent that does this kind of task well on its own (a reusable agent), fix the agent's prompt instead of its output, and re-run only when I say so.
 
+# Websites that block you (added 2026-11-09)
+- If a site refuses a plain download (curl, WebFetch) because it thinks you're a bot, open it in my Chrome (Claude in Chrome) instead, without asking. Don't try other tricks to get past the block. If Chrome can't open it either, ask me to paste the text.
+
 # Never mention connector authorization (added 2026-10-14)
 - Don't tell me that connectors (Gmail, Google Calendar or any other MCP server) need authorizing or re-authorizing. Ignore those notices.
 

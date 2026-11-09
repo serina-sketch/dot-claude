@@ -5,7 +5,10 @@
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); dotnet build -nologo 2>$null)",
       "PowerShell(git config --local user.email)",
       "PowerShell(git config --global user.email)",
-      "PowerShell(git config user.name)"
+      "PowerShell(git config user.name)",
+      "ClaudeInChromeDomain(www.google.com)",
+      "ClaudeInChromeDomain(127.0.0.1:8790)",
+      "ClaudeInChromeDomain(www.mcgill.ca)"
     ]
   },
   "model": "opus",
