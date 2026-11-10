@@ -22,3 +22,7 @@ Called "deep version": `/deep-version`. Plan: `plans/deep-version.md`.
 
 ## A cold reader too (2026-11-09, 7:51 PM)
 Also from the thread: after something is written, a fresh subagent with no context reads it and says whether it makes sense. I think that makes sense, as a skill or maybe just as an agent. Not decided which.
+
+## Cold reader: an agent (2026-11-09, 7:55 PM)
+The cold reader should be an agent, and Claude is the one who calls it. The agent file has the definition of a cold reader; Claude gives it the specific information about the project and the context of what I want, and it reads the thing and checks whether it makes sense. Basically an independent evaluator.
+Status: done 2026-11-09 → `agents/cold-reader.md` (Opus, medium effort, only when I ask), design in `design/cold-reader.md`.

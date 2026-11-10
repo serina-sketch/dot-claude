@@ -26,5 +26,6 @@ The work that built most of this happened in claude-assistant (its plans, ideas 
 - **Decided: a small command (2026-11-09, 7:48 PM)** ([deeper-version.md](ideas/deeper-version.md))
 - **The name (2026-11-09, 7:51 PM)** ([deeper-version.md](ideas/deeper-version.md))
 - **A cold reader too (2026-11-09, 7:51 PM)** ([deeper-version.md](ideas/deeper-version.md))
+- **Cold reader: an agent (2026-11-09, 7:55 PM)** ([deeper-version.md](ideas/deeper-version.md))
 - **A skill for easy explanations** ([explain-simply.md](ideas/explain-simply.md))
 - **Put Mochi in the global CLAUDE.md** ([mochi-global.md](ideas/mochi-global.md))
