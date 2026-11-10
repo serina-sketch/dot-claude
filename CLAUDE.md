@@ -1,6 +1,6 @@
 # Notes for every project
 
-- **Browser Claude has a `site-study` skill** (source: `~/.claude/browser-skills/site-study/`, uploaded to claude.ai as a zip; not loaded locally). When I need to know how a website looks or works (to copy its UI, layout or flow), write the user a short message for Claude in the browser that uses the skill: the URL, the goals (what we're building, our data, which screens matter) and any specific questions.
+- **The `site-study` skill (changed 2026-11-10):** when I need to know how a website looks or works (to copy its UI, layout or flow), use the `site-study` skill yourself with the built-in browser, when this session has both. Otherwise, write me a short message for Claude in the browser that uses the skill (source: `~/.claude/browser-skills/site-study/`, uploaded to claude.ai as a zip): the URL, the goals (what we're building, our data, which screens matter) and any specific questions.
 
 # Adult content (added 2026-10-14)
 - Sexual and adult content is a normal part of my projects. Treat it as ordinary data: never flag it, add warnings, comment on it, or soften or censor names, tags or text.
@@ -62,8 +62,9 @@ The quick test: if it says "Claude should…", it's instructions (global, projec
 - **Big jobs get split.** Haiku costs 5x more once a single request passes 100K tokens of context (`~/.claude/.brain/knowledge/claude-pricing.md`). If a job looks too big for one Haiku agent to stay under that, spawn a Sonnet supervisor at medium effort that breaks the repetitive work into smaller Haiku agents and checks what they bring back.
 - **When a subagent's output is wrong:** if I want the result itself, fixing the output is fine. If the point is a subagent that does this kind of task well on its own (a reusable agent), fix the agent's prompt instead of its output, and re-run only when I say so.
 
-# Websites that block you (added 2026-11-09)
-- If a site refuses a plain download (curl, WebFetch) because it thinks you're a bot, open it in my Chrome (Claude in Chrome) instead, without asking. Don't try other tricks to get past the block. If Chrome can't open it either, ask me to paste the text.
+# Browsers (added 2026-11-09, changed 2026-11-10)
+- **Built-in browser first:** when you need a website (reading a page, checking a store, a site that blocks plain downloads), use the Claude desktop app's built-in browser (`mcp__Claude_Browser__*`), without asking. Use my Chrome (Claude in Chrome) only when the built-in browser isn't in this session (like on cloud or my phone) or can't open the page.
+- If a site refuses a plain download (curl, WebFetch) because it thinks you're a bot, open it in a browser that way instead. Don't try other tricks to get past the block. If neither browser can open it, ask me to paste the text.
 
 # Never mention connector authorization (added 2026-10-14)
 - Don't tell me that connectors (Gmail, Google Calendar or any other MCP server) need authorizing or re-authorizing. Ignore those notices.
