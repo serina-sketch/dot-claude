@@ -14,4 +14,11 @@ What the article says (read 2026-11-09): there are four kinds of ambition with a
 
 ## Decided: a small command (2026-11-09, 7:48 PM)
 Felix's prompt should become a small command I can call on a big task. Maybe call it "deep" something; I'm not sure about the name yet. From the same thread I passed on "list what you're not going to touch" (kind of useless) and the out-of-scope list (not that useful, since plan files already do that job).
-Status: planned, not built yet.
+~~Status: planned, not built yet.~~ (replaced 2026-11-09)
+Status: done 2026-11-09 → `skills/deep-version/SKILL.md`, design in `design/deep-version.md`.
+
+## The name (2026-11-09, 7:51 PM)
+Called "deep version": `/deep-version`. Plan: `plans/deep-version.md`.
+
+## A cold reader too (2026-11-09, 7:51 PM)
+Also from the thread: after something is written, a fresh subagent with no context reads it and says whether it makes sense. I think that makes sense, as a skill or maybe just as an agent. Not decided which.
