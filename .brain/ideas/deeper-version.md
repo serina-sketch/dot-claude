@@ -10,4 +10,8 @@ The commenter says it can over-engineer, but it's very good for big features or 
 
 What the article says (read 2026-11-09): there are four kinds of ambition with a model. Speed is already well known. Altitude means asking for the outcome you want next instead of the single task, and it works less well for creative work. Depth means doing the work the way a top expert in the field would: their real tools, the raw data, challenging assumptions against that data, and an outside judge, never the model judging itself. Range means borrowing from other fields: describe the task as a verb (what it really does for people) and ask the model to *do* what each expert does, not to role-play them. His reason it matters: people are held back by what they believe is possible, and specific hard goals beat "do your best".
 
-Status: idea, not decided.
+~~Status: idea, not decided.~~ (replaced 2026-11-09, see below)
+
+## Decided: a small command (2026-11-09, 7:48 PM)
+Felix's prompt should become a small command I can call on a big task. Maybe call it "deep" something; I'm not sure about the name yet. From the same thread I passed on "list what you're not going to touch" (kind of useless) and the out-of-scope list (not that useful, since plan files already do that job).
+Status: planned, not built yet.

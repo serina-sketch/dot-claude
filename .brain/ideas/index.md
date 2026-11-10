@@ -7,6 +7,7 @@
 - **Fix the stale local master in cloud sessions** ([cloud-git.md](cloud-git.md))
 - **Use /clear instead of starting a new cloud chat** ([cloud-git.md](cloud-git.md))
 - **Found in the r/ClaudeAI thread (2026-11-09)** ([deeper-version.md](deeper-version.md))
+- **Decided: a small command (2026-11-09, 7:48 PM)** ([deeper-version.md](deeper-version.md))
 - **A skill for easy explanations** ([explain-simply.md](explain-simply.md))
 - **Put Mochi in the global CLAUDE.md** ([mochi-global.md](mochi-global.md))
 

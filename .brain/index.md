@@ -23,5 +23,6 @@ The work that built most of this happened in claude-assistant (its plans, ideas 
 - **Fix the stale local master in cloud sessions** ([cloud-git.md](ideas/cloud-git.md))
 - **Use /clear instead of starting a new cloud chat** ([cloud-git.md](ideas/cloud-git.md))
 - **Found in the r/ClaudeAI thread (2026-11-09)** ([deeper-version.md](ideas/deeper-version.md))
+- **Decided: a small command (2026-11-09, 7:48 PM)** ([deeper-version.md](ideas/deeper-version.md))
 - **A skill for easy explanations** ([explain-simply.md](ideas/explain-simply.md))
 - **Put Mochi in the global CLAUDE.md** ([mochi-global.md](ideas/mochi-global.md))
