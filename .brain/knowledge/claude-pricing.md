@@ -39,3 +39,9 @@
 - **Max 20x ($200 a month):** about $1,643 a week of API value (measured October 12 to 19, 2026), only about 9.7x Pro, not 20x. Another user tallied $1,588 of API value over 30 days on Max.
 - **Light users** get less than they pay for; the value only shows up when the limits are used. Caching changes the numbers a lot.
 - Sources: [Wokey usage limits](https://wokey.ai/claude-usage-limits), [Toolcolumn: Pro and Max vs API](https://www.toolcolumn.com/learn/claude-pro-max-vs-api-pricing), [Morph](https://www.morphllm.com/claude-code-pricing), [Product Compass](https://www.productcompass.pm/p/claude-code-pricing), [NxCode](https://www.nxcode.io/resources/news/claude-code-pricing-2026-free-api-costs-max-plan). Third-party, not Anthropic.
+
+## The "Fable only" usage bar (checked 2026-11-12)
+- On Max and Ultra, the Usage screen shows two weekly bars: "All models" and "Fable only". Fable counts toward the all-models limit too. The "Fable only" bar is a cap on Fable's share: Fable can use at most about 50% of the weekly limit, so a full "Fable only" bar means Fable has used about half the week. Other models draw from the same weekly limit. Once the Fable cap is reached, Fable stops (or runs on usage credits) even if the rest of the weekly limit is unused; other models still work.
+- One source says these terms (Fable up to 50% of the weekly limit, plus one Fable reset) run only through November 16, 2026, 11:59 p.m. Pacific. Not confirmed by Anthropic; check the pricing page.
+- Rain's screen on 2026-11-12: All models 85%, Fable only 33%, a free full reset expiring Dec 10 and a free Fable reset expiring Nov 17.
+- Sources (mostly third-party): [fable5.app](https://fable5.app/fable-5-usage-limits/), [pasqualepillitteri.it](https://pasqualepillitteri.it/en/news/31652/claude-ultra-opus-5-5-fable-5-2-usage-limits), [Anthropic help: usage limits](https://support.anthropic.com/en/articles/11647753-understanding-usage-and-length-limits).
