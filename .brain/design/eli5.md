@@ -14,3 +14,10 @@
 - **Simple first, true later:** taken from DreambigOu's ELI5. Being about 80% right and understood beats being fully accurate. Just as much detail as I need to get the idea. Like the solar system diagram: once I've understood the planets in their neat circles, add that they're actually much smaller and farther apart, then add the real physics.
 - **From tutor mode:** find which background idea I'm missing and explain that first; a small example right after a definition; one idea at a time. Left out: making me solve things, hints instead of answers, confidence ratings, justifying answers.
 - **"What this simplified" line (2026-10-20):** every explanation ends with a short line naming what the simple version left out or bent. I liked it the first time I used the skill and want to keep it.
+
+## Decisions (2026-11-13)
+I asked whether a bare neck in the cold is dangerous. The first answer was long and covered everything, and I found it annoying, like the websites that don't answer my question and just repeat it. The ELI5 version, short and aimed at my worry, was what I wanted, and I said this modified ELI5 is good enough for quick questions.
+- **Find the real question:** get my intention (what exactly I'm asking, like "is it dangerous for me?") and aim the answer at it, personalized.
+- **Clear up misconceptions:** target the common misconceptions around the question.
+- **No repetition:** never repeat my question back; start with the answer.
+
